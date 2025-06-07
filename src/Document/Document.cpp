@@ -683,7 +683,7 @@ DocumentModelGeneral Document::modelGeneral() const
 
 DocumentModelGridDisplay Document::modelGridDisplay() const
 {
-  return m_coordSystemContext.modelGridRemoval();
+  return m_coordSystemContext.modelGridDisplay();
 }
 
 DocumentModelGuideline Document::modelGuideline() const
