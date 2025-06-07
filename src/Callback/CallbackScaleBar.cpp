@@ -57,7 +57,6 @@ double CallbackScaleBar::scaleBarLength () const
 
 QString CallbackScaleBar::scaleBarPointIdentifier () const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CallbackScaleBar::scaleBarPointIdentifier";
 
   return m_scaleBarPointIdentifier;
 }

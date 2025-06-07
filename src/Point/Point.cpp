@@ -272,7 +272,6 @@ QString Point::identifier() const
 
 unsigned int Point::identifierIndex ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Point::identifierIndex"
                               << " identifierIndex=" << m_identifierIndex;
 
   return m_identifierIndex;
@@ -290,7 +289,6 @@ bool Point::isXOnly() const
 
 void Point::loadXml(QXmlStreamReader &reader)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Point::loadXml";
 
   bool success = true;
 
@@ -367,7 +365,6 @@ void Point::loadXml(QXmlStreamReader &reader)
       }
     }
 
-    LOG4CPP_INFO_S ((*mainCat)) << "Point::loadXml"
                                 << " identifier=" << m_identifier.toLatin1().data()
                                 << " identifierIndex=" << m_identifierIndex
                                 << " posScreen=" << QPointFToString (m_posScreen).toLatin1().data()
@@ -431,7 +428,6 @@ void Point::printStream(QString indentation,
 
 void Point::saveXml(QXmlStreamWriter &writer) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Point::saveXml";
 
   writer.writeStartElement(DOCUMENT_SERIALIZE_POINT);
   writer.writeAttribute(DOCUMENT_SERIALIZE_POINT_IDENTIFIER, m_identifier);
@@ -477,7 +473,6 @@ void Point::setCurveName(const QString &curveNameNew)
 
 void Point::setIdentifierIndex (unsigned int identifierIndex)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Point::setIdentifierIndex"
                               << " identifierIndex=" << identifierIndex;
 
   m_identifierIndex = identifierIndex;
@@ -526,7 +521,6 @@ QString Point::temporaryPointIdentifier ()
 
 QString Point::uniqueIdentifierGenerator (const QString &curveName)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Point::uniqueIdentifierGenerator"
                               << " curveName=" << curveName.toLatin1().data()
                               << " identifierIndex=" << m_identifierIndex;
 

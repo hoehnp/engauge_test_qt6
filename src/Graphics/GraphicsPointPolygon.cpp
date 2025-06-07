@@ -17,7 +17,6 @@ GraphicsPointPolygon::GraphicsPointPolygon(GraphicsPoint &graphicsPoint,
   m_graphicsPoint (graphicsPoint),
   m_shadow (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsPointPolygon::GraphicsPointPolygon";
 }
 
 void GraphicsPointPolygon::hoverEnterEvent(QGraphicsSceneHoverEvent *event)

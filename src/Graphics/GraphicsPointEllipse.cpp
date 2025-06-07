@@ -18,7 +18,6 @@ GraphicsPointEllipse::GraphicsPointEllipse(GraphicsPoint &graphicsPoint,
   m_graphicsPoint (graphicsPoint),
   m_shadow (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsPointEllipse::GraphicsPointEllipse";
 }
 
 void GraphicsPointEllipse::hoverEnterEvent(QGraphicsSceneHoverEvent *event)

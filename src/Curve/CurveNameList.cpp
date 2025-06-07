@@ -27,7 +27,6 @@ int CurveNameList::columnCount (const QModelIndex &  /* parent */) const
 
 bool CurveNameList::containsCurveNameCurrent (const QString &curveName) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CurveNameList::containsCurveNameCurrent";
 
   // Search for curve with matching name
   CurrentCurveToOriginalCurve::const_iterator itr;
@@ -43,7 +42,6 @@ bool CurveNameList::containsCurveNameCurrent (const QString &curveName) const
 
 QString CurveNameList::currentCurvesAsString () const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CurveNameList::currentCurvesAsString";
 
   QString out;
   QTextStream str (&out);
@@ -239,7 +237,6 @@ bool CurveNameList::removeRows (int row,
 
 void CurveNameList::reset()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "CurveNameList::reset";
 
   clear();
   m_currentCurveToOriginalCurve.clear();

@@ -182,7 +182,6 @@ MainWindow::MainWindow(const QString &errorReportFile,
   m_extractImageOnlyExtension (extractImageOnlyExtension),
   m_timerChecklistGuideWizard (nullptr)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::MainWindow"
                               << " curDir=" << QDir::currentPath().toLatin1().data();
 
 #if defined(OSX_DEBUG) || defined(OSX_RELEASE)
@@ -333,7 +332,6 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 void MainWindow::cmdFileClose()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::cmdFileClose";
 
   setWindowModified (false); // Prevent popup query asking if changes should be saved
   slotFileClose();
@@ -341,7 +339,6 @@ void MainWindow::cmdFileClose()
 
 void MainWindow::cmdFileExport(const QString &fileName)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::cmdFileExport";
 
   ExportToFile exportStrategy;
   fileExport(fileName,
@@ -350,7 +347,6 @@ void MainWindow::cmdFileExport(const QString &fileName)
 
 void MainWindow::cmdFileImport(const QString &fileName)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::cmdFileImport";
 
   m_regressionFile = exportRegressionFilenameFromInputFilename (fileName);
   fileImport (fileName,
@@ -359,7 +355,6 @@ void MainWindow::cmdFileImport(const QString &fileName)
 
 void MainWindow::cmdFileOpen(const QString &fileName)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::cmdFileOpen";
 
   m_regressionFile = exportRegressionFilenameFromInputFilename (fileName);
   loadDocumentFile(fileName);
@@ -417,7 +412,6 @@ bool MainWindow::eventFilter(QObject *target, QEvent *event)
 #if !defined(OSX_DEBUG) && !defined(OSX_RELEASE)
 void MainWindow::exportAllCoordinateSystemsAfterRegressionTests()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::exportAllCoordinateSystemsAfterRegressionTests curDir=" << QDir::currentPath().toLatin1().data();
 
   // Output the regression test results. One file is output for every coordinate system
   for (CoordSystemIndex index = 0; index < m_cmdMediator->document().coordSystemCount(); index++) {
@@ -469,7 +463,6 @@ QString MainWindow::exportRegressionFilenameFromInputFilename (const QString &fi
 void MainWindow::fileExport(const QString &fileName,
                             ExportToFile exportStrategy)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::fileExport"
                               << " curDir=" << QDir::currentPath().toLatin1().data()
                               << " fileName=" << fileName.toLatin1().data();
 
@@ -506,7 +499,6 @@ void MainWindow::fileExport(const QString &fileName,
 
 void MainWindow::fileExtractImage (const QString &fileName)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::fileExtractImage"
                               << " curDir=" << QDir::currentPath().toLatin1().data()
                               << " fileName=" << fileName.toLatin1().data();
 
@@ -552,7 +544,6 @@ void MainWindow::fileExtractImage (const QString &fileName)
 void MainWindow::fileImport (const QString &fileName,
                              ImportType importType)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::fileImport"
                               << " fileName=" << fileName.toLatin1 ().data ()
                               << " curDir=" << QDir::currentPath().toLatin1().data()
                               << " importType=" << importType;
@@ -685,7 +676,6 @@ void MainWindow::fileImport (const QString &fileName,
 
 void MainWindow::fileImportWithPrompts (ImportType importType)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::fileImportWithPrompts"
                               << " importType=" << importType;
 
   // Skip maybeSave method for IMPORT_TYPE_REPLACE_IMAGE since open file dialog is enough to allow user to cancel the operation, and
@@ -763,7 +753,6 @@ QString MainWindow::fileNameForExtractImageOnly () const
 
 void MainWindow::filePaste (ImportType importType)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::filePaste"
                               << " importType=" << importType;
 
   QString originalFileOld = m_originalFile;
@@ -867,7 +856,6 @@ void MainWindow::ghostsDestroy ()
 void MainWindow::guidelineAddXT (const QString &identifier,
                                  double xT)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::guidelineAddXT";
 
   if (m_cmdMediator->document().modelCoords().coordsType() == COORDS_TYPE_CARTESIAN) {
     m_guidelines.createGuidelineX (identifier,
@@ -894,7 +882,6 @@ void MainWindow::guidelineAddXTEnqueue (double xT)
 void MainWindow::guidelineAddYR (const QString &identifier,
                                  double yR)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::guidelineAddYR";
 
   if (m_cmdMediator->document().modelCoords().coordsType() == COORDS_TYPE_CARTESIAN) {
     m_guidelines.createGuidelineY (identifier,
@@ -921,7 +908,6 @@ void MainWindow::guidelineAddYREnqueue (double yR)
 void MainWindow::guidelineMoveXT (const QString &identifier,
                                   double valueAfter)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::guidelineMoveXT";
 
   m_guidelines.moveGuidelineXT (identifier,
                                 valueAfter);
@@ -934,7 +920,6 @@ void MainWindow::guidelineMoveXT (const QString &identifier,
 void MainWindow::guidelineMoveYR (const QString &identifier,
                                   double valueAfter)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::guidelineMoveYR";
 
   m_guidelines.moveGuidelineYR (identifier,
                                 valueAfter);
@@ -946,7 +931,6 @@ void MainWindow::guidelineMoveYR (const QString &identifier,
 
 void MainWindow::guidelineRemove (const QString &identifier)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::guidelineRemove";
 
   m_guidelines.removeGuideline (identifier);
 
@@ -978,7 +962,6 @@ void MainWindow::handleGuidelineMode ()
 
 void MainWindow::handlerFileExtractImage ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::handlerFileExtractImage";
 
   if (m_isExtractImageOnly) {
     QString fileName = fileNameForExtractImageOnly ();
@@ -1002,7 +985,6 @@ bool MainWindow::isGnuplot() const
 
 void MainWindow::loadCoordSystemListFromCmdMediator ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::loadCoordSystemListFromCmdMediator";
 
   m_cmbCoordSystem->clear();
 
@@ -1026,7 +1008,6 @@ void MainWindow::loadCoordSystemListFromCmdMediator ()
 
 void MainWindow::loadCurveListFromCmdMediator ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::loadCurveListFromCmdMediator";
 
   m_cmbCurve->clear ();
   QStringList curvesGraphsNames = m_cmdMediator->curvesGraphsNames ();
@@ -1043,7 +1024,6 @@ void MainWindow::loadCurveListFromCmdMediator ()
 
 void MainWindow::loadDocumentFile (const QString &fileName)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::loadDocumentFile fileName=" << fileName.toLatin1 ().data ();
 
   QApplication::setOverrideCursor(Qt::WaitCursor);
   CmdMediator *cmdMediator = new CmdMediator (*this,
@@ -1094,7 +1074,6 @@ void MainWindow::loadDocumentFile (const QString &fileName)
 
 void MainWindow::loadErrorReportFile(const QString &errorReportFile)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::loadErrorReportFile"
                               << " file=" << errorReportFile.toLatin1().data();
 
   QFile file (errorReportFile);
@@ -1133,7 +1112,6 @@ void MainWindow::loadErrorReportFile(const QString &errorReportFile)
 
 void MainWindow::loadGuidelinesFromCmdMediator ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::loadGuidelinesFromCmdMediator";
 
   m_guidelines.setModelGuideline (m_cmdMediator->document().modelCoords().coordsType(),
                                   m_cmdMediator->document().modelGuideline());
@@ -1143,7 +1121,6 @@ bool MainWindow::loadImage (const QString &fileName,
                             const QImage &image,
                             ImportType importType)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::loadImage"
                               << " fileName=" << fileName.toLatin1 ().data ()
                               << " importType=" << importType;
 
@@ -1165,7 +1142,6 @@ bool MainWindow::loadImageNewDocument (const QString &fileName,
                                        const QImage &image,
                                        ImportType importType)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::loadImageNewDocument"
                               << " fileName=" << fileName.toLatin1 ().data ()
                               << " importType=" << importType;
 
@@ -1221,7 +1197,6 @@ bool MainWindow::loadImageReplacingImage (const QString &fileName,
                                           const QImage &image,
                                           ImportType importType)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::loadImageReplacingImage"
                               << " fileName=" << fileName.toLatin1 ().data ()
                               << " importType=" << importType;
 
@@ -1372,7 +1347,6 @@ MainWindowModel MainWindow::modelMainWindow () const
 
 void MainWindow::rebuildRecentFileListForCurrentFile(const QString &filePath)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::rebuildRecentFileListForCurrentFile";
 
   setWindowFilePath (filePath);
 
@@ -1401,7 +1375,6 @@ void MainWindow::resizeEvent(QResizeEvent *event)
 
 bool MainWindow::saveDocumentFile (const QString &fileName)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::saveDocumentFile fileName=" << fileName.toLatin1 ().data ();
 
   loadViewsSave(); // Save views settings just before saving file
 
@@ -1587,7 +1560,6 @@ QString MainWindow::saveErrorReportFileAndExitXml (const char *context,
 
 void MainWindow::saveStartingDocumentSnapshot()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::saveStartingDocumentSnapshot";
 
   QXmlStreamWriter writer (&m_startingDocumentSnapshot);
   writer.setAutoFormatting (true);
@@ -1602,7 +1574,6 @@ GraphicsScene &MainWindow::scene ()
 
 BackgroundImage MainWindow::selectOriginal(BackgroundImage backgroundImage)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::selectBackgroundOriginal";
 
   BackgroundImage previousBackground = static_cast<BackgroundImage> (m_cmbBackground->currentData().toInt());
 
@@ -1621,14 +1592,12 @@ QString MainWindow::selectedGraphCurve () const
 
 void MainWindow::sendGong ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::sendGong";
 
   emit signalGong ();
 }
 
 void MainWindow::setCurrentFile (const QString &fileName)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::setCurrentFile";
 
   QString fileNameStripped;
   if (!fileName.isEmpty()) {
@@ -1672,7 +1641,6 @@ void MainWindow::setNonFillZoomFactor (ZoomFactor newZoomFactor)
 void MainWindow::setPixmap (const QString &curveSelected,
                             const QPixmap &pixmap)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::setPixmap";
 
   m_digitizeStateContext->setImageIsLoaded (m_cmdMediator,
                                             true);
@@ -1929,7 +1897,6 @@ bool MainWindow::setupAfterLoadNewDocument (const QString &fileName,
                                             const QString &temporaryMessage ,
                                             ImportType importType)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::setupAfterLoadNewDocument"
                               << " file=" << fileName.toLatin1().data()
                               << " message=" << temporaryMessage.toLatin1().data()
                               << " importType=" << importType;
@@ -2017,7 +1984,6 @@ bool MainWindow::setupAfterLoadReplacingImage (const QString &fileName,
                                                const QString &temporaryMessage ,
                                                ImportType importType)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::setupAfterLoadReplacingImage"
                               << " file=" << fileName.toLatin1().data()
                               << " message=" << temporaryMessage.toLatin1().data()
                               << " importType=" << importType;
@@ -2053,7 +2019,6 @@ bool MainWindow::setupAfterLoadReplacingImage (const QString &fileName,
 
 void MainWindow::showEvent (QShowEvent *event)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::showEvent"
                               << " files=" << m_loadStartupFiles.join (",").toLatin1().data();
 
   QMainWindow::showEvent (event);
@@ -2123,21 +2088,18 @@ void MainWindow::slotCanUndoChanged (bool canUndo)
 
 void MainWindow::slotChecklistClosed()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotChecklistClosed";
 
   m_actionViewChecklistGuideWindow->setChecked (false);
 }
 
 void MainWindow::slotCleanChanged(bool clean)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotCleanChanged";
 
   setWindowModified (!clean);
 }
 
 void MainWindow::slotCmbBackground(int currentIndex)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotCmbBackground";
 
   switch (currentIndex) {
     case BACKGROUND_IMAGE_NONE:
@@ -2164,7 +2126,6 @@ void MainWindow::slotCmbBackground(int currentIndex)
 
 void MainWindow::slotCmbCoordSystem(int index)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotCmbCoordSystem";
 
   CmdSelectCoordSystem *cmd = new CmdSelectCoordSystem (*this,
                                                         m_cmdMediator->document(),
@@ -2175,7 +2136,6 @@ void MainWindow::slotCmbCoordSystem(int index)
 
 void MainWindow::slotCmbCurve(int /* index */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotCmbCurve";
 
   m_backgroundStateContext->setCurveSelected (m_isGnuplot,
                                               m_transformation,
@@ -2193,7 +2153,6 @@ void MainWindow::slotCmbCurve(int /* index */)
 
 void MainWindow::slotContextMenuEventAxis (QString pointIdentifier)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotContextMenuEventAxis point=" << pointIdentifier.toLatin1 ().data ();
 
   m_digitizeStateContext->handleContextMenuEventAxis (m_cmdMediator,
                                                       pointIdentifier);
@@ -2201,7 +2160,6 @@ void MainWindow::slotContextMenuEventAxis (QString pointIdentifier)
 
 void MainWindow::slotContextMenuEventGraph (QStringList pointIdentifiers)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotContextMenuEventGraph point=" << pointIdentifiers.join(",").toLatin1 ().data ();
 
   m_digitizeStateContext->handleContextMenuEventGraph (m_cmdMediator,
                                                        pointIdentifiers);
@@ -2209,7 +2167,6 @@ void MainWindow::slotContextMenuEventGraph (QStringList pointIdentifiers)
 
 void MainWindow::slotDigitizeAxis ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotDigitizeAxis";
 
   m_digitizeStateContext->requestImmediateStateTransition (m_cmdMediator,
                                                            DIGITIZE_STATE_AXIS);
@@ -2221,7 +2178,6 @@ void MainWindow::slotDigitizeAxis ()
 
 void MainWindow::slotDigitizeColorPicker ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotDigitizeColorPicker";
 
   m_digitizeStateContext->requestImmediateStateTransition (m_cmdMediator,
                                                            DIGITIZE_STATE_COLOR_PICKER);
@@ -2233,7 +2189,6 @@ void MainWindow::slotDigitizeColorPicker ()
 
 void MainWindow::slotDigitizeCurve ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotDigitizeCurve";
 
   m_digitizeStateContext->requestImmediateStateTransition (m_cmdMediator,
                                                            DIGITIZE_STATE_CURVE);
@@ -2245,7 +2200,6 @@ void MainWindow::slotDigitizeCurve ()
 
 void MainWindow::slotDigitizeGuidelines ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotDigitizeGuidelines";
 
   m_digitizeStateContext->requestImmediateStateTransition (m_cmdMediator,
                                                            DIGITIZE_STATE_GUIDELINE);
@@ -2257,7 +2211,6 @@ void MainWindow::slotDigitizeGuidelines ()
 
 void MainWindow::slotDigitizePointMatch ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotDigitizePointMatch";
 
   m_digitizeStateContext->requestImmediateStateTransition (m_cmdMediator,
                                                            DIGITIZE_STATE_POINT_MATCH);
@@ -2269,7 +2222,6 @@ void MainWindow::slotDigitizePointMatch ()
 
 void MainWindow::slotDigitizeScale ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotDigitizeScale";
 
   m_digitizeStateContext->requestImmediateStateTransition (m_cmdMediator,
                                                            DIGITIZE_STATE_SCALE);
@@ -2281,7 +2233,6 @@ void MainWindow::slotDigitizeScale ()
 
 void MainWindow::slotDigitizeSegment ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotDigitizeSegment";
 
   m_digitizeStateContext->requestImmediateStateTransition (m_cmdMediator,
                                                            DIGITIZE_STATE_SEGMENT);
@@ -2293,7 +2244,6 @@ void MainWindow::slotDigitizeSegment ()
 
 void MainWindow::slotDigitizeSelect ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotDigitizeSelect";
 
   m_digitizeStateContext->requestImmediateStateTransition (m_cmdMediator,
                                                            DIGITIZE_STATE_SELECT);
@@ -2305,7 +2255,6 @@ void MainWindow::slotDigitizeSelect ()
 
 void MainWindow::slotEditCopy ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotEditCopy";
 
   // Copy command is sent to FittingWindow or GeometryWindow, or processed locally
   bool tableFittingIsActive, tableFittingIsCopyable;
@@ -2340,7 +2289,6 @@ void MainWindow::slotEditCopy ()
 
 void MainWindow::slotEditCut ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotEditCut";
 
   // Copy command is sent to FittingWindow or GeometryWindow, or processed locally
   bool tableFittingIsActive, tableFittingIsCopyable;
@@ -2369,7 +2317,6 @@ void MainWindow::slotEditCut ()
 
 void MainWindow::slotEditDelete ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotEditDelete";
 
   // Copy command is sent to FittingWindow or GeometryWindow, or processed locally
   bool tableFittingIsActive, tableFittingIsCopyable;
@@ -2404,7 +2351,6 @@ void MainWindow::slotEditDelete ()
 
 void MainWindow::slotEditMenu ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotEditMenu";
 
   m_actionEditPasteAsNew->setEnabled (!QApplication::clipboard()->image().isNull());
   m_actionEditPasteAsNewAdvanced->setEnabled (!QApplication::clipboard()->image().isNull());
@@ -2412,7 +2358,6 @@ void MainWindow::slotEditMenu ()
 
 void MainWindow::slotEditPaste ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotEditPaste";
 
   QList<QPoint> points;
   QList<double> ordinals;
@@ -2433,21 +2378,18 @@ void MainWindow::slotEditPaste ()
 
 void MainWindow::slotEditPasteAsNew ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotEditPasteAsNew";
 
   filePaste (IMPORT_TYPE_SIMPLE);
 }
 
 void MainWindow::slotEditPasteAsNewAdvanced ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotEditPasteAsNewAdvanced";
 
   filePaste (IMPORT_TYPE_ADVANCED);
 }
 
 void MainWindow::slotFileClose()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotFileClose";
 
   if (maybeSave ()) {
 
@@ -2502,7 +2444,6 @@ void MainWindow::slotFileClose()
 
 void MainWindow::slotFileExport ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotFileExport";
 
   if (m_transformation.transformIsDefined()) {
 
@@ -2547,21 +2488,18 @@ void MainWindow::slotFileExport ()
 
 void MainWindow::slotFileImport ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotFileImport";
 
   fileImportWithPrompts (IMPORT_TYPE_SIMPLE);
 }
 
 void MainWindow::slotFileImportAdvanced ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotFileImportAdvanced";
 
   fileImportWithPrompts (IMPORT_TYPE_ADVANCED);
 }
 
 void MainWindow::slotFileImportDraggedImage(QImage image)
 {  
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotFileImportDraggedImage";
 
   // No need to check return value from loadImage since there are no prompts that give the user a chance to cancel
   loadImage ("",
@@ -2571,7 +2509,6 @@ void MainWindow::slotFileImportDraggedImage(QImage image)
 
 void MainWindow::slotFileImportDraggedImageUrl(QUrl url)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotFileImportDraggedImageUrl url=" << url.toString ().toLatin1 ().data ();
 
   // This is required for drag and drop from GraphicsView. This had an #ifdef
   // around it for NETWORKING but restored for drag and drop
@@ -2581,7 +2518,6 @@ void MainWindow::slotFileImportDraggedImageUrl(QUrl url)
 
 void MainWindow::slotFileImportImage(QString fileName, QImage image)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotFileImportImage fileName=" << fileName.toLatin1 ().data ();
 
   // No need to check return value from loadImage since there are no prompts that give the user a chance to cancel
   loadImage (fileName,
@@ -2591,14 +2527,12 @@ void MainWindow::slotFileImportImage(QString fileName, QImage image)
 
 void MainWindow::slotFileImportImageReplace ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotFileImportImageReplace";
 
   fileImportWithPrompts (IMPORT_TYPE_IMAGE_REPLACE);
 }
 
 void MainWindow::slotFileOpen()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotFileOpen";
 
   if (maybeSave ()) {
 
@@ -2624,14 +2558,12 @@ void MainWindow::slotFileOpen()
 
 void MainWindow::slotFileOpenDraggedDigFile (QString fileName)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotFileOpenDraggedDigFile";
 
   loadDocumentFile (fileName);
 }
 
 void MainWindow::slotFilePrint()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotFilePrint";
 
   QPrinter printer (QPrinter::HighResolution);
   QPrintDialog dlg (&printer, this);
@@ -2644,7 +2576,6 @@ void MainWindow::slotFilePrint()
 
 bool MainWindow::slotFileSave()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotFileSave";
 
   if (m_engaugeFile.isEmpty()) {
     return slotFileSaveAs();
@@ -2655,7 +2586,6 @@ bool MainWindow::slotFileSave()
 
 bool MainWindow::slotFileSaveAs()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotFileSaveAs";
 
   // Append engauge file extension if it is not already there
   QString filenameDefault = m_currentFile;
@@ -2703,7 +2633,6 @@ bool MainWindow::slotFileSaveAs()
 
 void MainWindow::slotFittingWindowClosed()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotFittingWindowClosed";
 
   m_actionViewFittingWindow->setChecked (false);
 }
@@ -2715,7 +2644,6 @@ void MainWindow::slotFittingWindowCurveFit(FittingCurveCoefficients fittingCurve
                                            bool isLogYRadius)
 {
   // Do not output elements in fittingCurveCoef here since that list may be empty
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotFittingWindowCurveFit"
                               << " order=" << fittingCurveCoef.size() - 1;
 
   if (m_fittingCurve != nullptr) {
@@ -2735,7 +2663,6 @@ void MainWindow::slotFittingWindowCurveFit(FittingCurveCoefficients fittingCurve
 
 void MainWindow::slotGeometryWindowClosed()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotGeometryWindowClosed";
 
   m_actionViewGeometryWindow->setChecked (false);
 }
@@ -2745,7 +2672,6 @@ void MainWindow::slotGuidelineDragged(QString identifierReplaced,
                                       bool draggedOffscreen,
                                       GuidelineState guidelineStateForReplacement)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotGuidelineDragged";
 
   // Create replacement Guideline and register it with Guidelines instead of the original
   m_guidelines.createReplacementGuideline (identifierReplaced,
@@ -2767,7 +2693,6 @@ void MainWindow::slotGuidelineDragged(QString identifierReplaced,
 
 void MainWindow::slotHelpAbout()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotHelpAbout";
 
   DlgAbout dlg (*this);
   dlg.exec ();
@@ -2775,7 +2700,6 @@ void MainWindow::slotHelpAbout()
 
 void MainWindow::slotHelpTutorial()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotHelpTutorial";
 
   m_tutorialDlg->show ();
   m_tutorialDlg->exec ();
@@ -2784,7 +2708,6 @@ void MainWindow::slotHelpTutorial()
 void MainWindow::slotKeyPress (Qt::Key key,
                                bool atLeastOneSelectedItem)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotKeyPress"
                               << " key=" << QKeySequence (key).toString().toLatin1 ().data ()
                               << " atLeastOneSelectedItem=" << (atLeastOneSelectedItem ? "true" : "false");
 
@@ -2795,7 +2718,6 @@ void MainWindow::slotKeyPress (Qt::Key key,
 
 void MainWindow::slotLoadStartupFiles ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotLoadStartupFiles";
 
   ENGAUGE_ASSERT (m_loadStartupFiles.count() > 0);
 
@@ -2854,7 +2776,6 @@ void MainWindow::slotMouseMove (QPointF pos)
 
 void MainWindow::slotMousePress (QPointF pos)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotMousePress";
 
   m_scene->resetPositionHasChangedFlags();
 
@@ -2864,7 +2785,6 @@ void MainWindow::slotMousePress (QPointF pos)
 
 void MainWindow::slotMouseRelease (QPointF pos)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotMouseRelease";
 
   if (pos.x() < 0 || pos.y() < 0) {
 
@@ -2882,7 +2802,6 @@ void MainWindow::slotMouseRelease (QPointF pos)
 
 void MainWindow::slotRecentFileAction ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotRecentFileAction";
 
   QAction *action = qobject_cast<QAction*>(sender ());
 
@@ -2894,7 +2813,6 @@ void MainWindow::slotRecentFileAction ()
 
 void MainWindow::slotRecentFileClear ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotRecentFileClear";
 
   QStringList emptyList;
 
@@ -2918,7 +2836,6 @@ void MainWindow::slotRedoTextChanged (const QString &text)
 
 void MainWindow::slotSettingsAxesChecker ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotSettingsAxesChecker";
 
   m_dlgSettingsAxesChecker->load (*m_cmdMediator);
   m_dlgSettingsAxesChecker->show ();
@@ -2926,7 +2843,6 @@ void MainWindow::slotSettingsAxesChecker ()
 
 void MainWindow::slotSettingsColorFilter ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotSettingsColorFilter";
 
   m_dlgSettingsColorFilter->load (*m_cmdMediator);
   m_dlgSettingsColorFilter->show ();
@@ -2934,7 +2850,6 @@ void MainWindow::slotSettingsColorFilter ()
 
 void MainWindow::slotSettingsCoords ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotSettingsCoords";
 
   m_dlgSettingsCoords->load (*m_cmdMediator);
   m_dlgSettingsCoords->show ();
@@ -2942,7 +2857,6 @@ void MainWindow::slotSettingsCoords ()
 
 void MainWindow::slotSettingsCurveList ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotSettingsCurveList";
 
   m_dlgSettingsCurveList->load (*m_cmdMediator);
   m_dlgSettingsCurveList->show ();
@@ -2950,7 +2864,6 @@ void MainWindow::slotSettingsCurveList ()
 
 void MainWindow::slotSettingsCurveProperties ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotSettingsCurveProperties";
 
   m_dlgSettingsCurveProperties->load (*m_cmdMediator);
   m_dlgSettingsCurveProperties->setCurveName (selectedGraphCurve ());
@@ -2959,7 +2872,6 @@ void MainWindow::slotSettingsCurveProperties ()
 
 void MainWindow::slotSettingsDigitizeCurve ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotSettingsDigitizeCurve";
 
   m_dlgSettingsDigitizeCurve->load (*m_cmdMediator);
   m_dlgSettingsDigitizeCurve->show ();
@@ -2967,7 +2879,6 @@ void MainWindow::slotSettingsDigitizeCurve ()
 
 void MainWindow::slotSettingsExportFormat ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotSettingsExportFormat";
 
   if (transformIsDefined()) {
     m_dlgSettingsExportFormat->load (*m_cmdMediator);
@@ -2980,7 +2891,6 @@ void MainWindow::slotSettingsExportFormat ()
 
 void MainWindow::slotSettingsGeneral ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotSettingsGeneral";
 
   m_dlgSettingsGeneral->load (*m_cmdMediator);
   m_dlgSettingsGeneral->show ();
@@ -2988,7 +2898,6 @@ void MainWindow::slotSettingsGeneral ()
 
 void MainWindow::slotSettingsGridDisplay()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotSettingsGridDisplay";
 
   m_dlgSettingsGridDisplay->load (*m_cmdMediator);
   m_dlgSettingsGridDisplay->show ();
@@ -2996,7 +2905,6 @@ void MainWindow::slotSettingsGridDisplay()
 
 void MainWindow::slotSettingsGridRemoval ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotSettingsGridRemoval";
 
   m_dlgSettingsGridRemoval->load (*m_cmdMediator);
   m_dlgSettingsGridRemoval->show ();
@@ -3004,7 +2912,6 @@ void MainWindow::slotSettingsGridRemoval ()
 
 void MainWindow::slotSettingsGuideline ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotSettingsGuideline";
 
   m_dlgSettingsGuideline->load (*m_cmdMediator);
   m_dlgSettingsGuideline->show ();
@@ -3012,7 +2919,6 @@ void MainWindow::slotSettingsGuideline ()
 
 void MainWindow::slotSettingsPointMatch ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotSettingsPointMatch";
 
   m_dlgSettingsPointMatch->load (*m_cmdMediator);
   m_dlgSettingsPointMatch->show ();
@@ -3020,7 +2926,6 @@ void MainWindow::slotSettingsPointMatch ()
 
 void MainWindow::slotSettingsSegments ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotSettingsSegments";
 
   m_dlgSettingsSegments->load (*m_cmdMediator);
   m_dlgSettingsSegments->show ();
@@ -3028,7 +2933,6 @@ void MainWindow::slotSettingsSegments ()
 
 void MainWindow::slotTableStatusChange ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotTableStatusChange";
 
   // This slot is called when either window in FittingWindow or GeometryWindow loses/gains focus. This is
   // so the Copy menu item can be updated
@@ -3037,7 +2941,6 @@ void MainWindow::slotTableStatusChange ()
 
 void MainWindow::slotSettingsMainWindow ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotSettingsMainWindow";
 
   m_dlgSettingsMainWindow->loadMainWindowModel (*m_cmdMediator,
                                                 m_modelMainWindow);
@@ -3046,7 +2949,6 @@ void MainWindow::slotSettingsMainWindow ()
 
 void MainWindow::slotTimeoutChecklistGuideWizard ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotTimeoutChecklistGuideWizard";
     
   // Show wizard
   ChecklistGuideWizard *wizard = new ChecklistGuideWizard (*this,
@@ -3081,7 +2983,6 @@ void MainWindow::slotTimeoutChecklistGuideWizard ()
 
 void MainWindow::slotTimeoutRegressionErrorReport ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotTimeoutRegressionErrorReport"
                               << " cmdStackIndex=" << m_cmdMediator->index()
                               << " cmdStackCount=" << m_cmdMediator->count();
 
@@ -3110,7 +3011,6 @@ void MainWindow::slotTimeoutRegressionErrorReport ()
 
 void MainWindow::slotTimeoutRegressionFileCmdScript ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotTimeoutRegressionFileCmdScript";
 
   if (m_fileCmdScript->canRedo()) {
 
@@ -3162,7 +3062,6 @@ void MainWindow::slotViewGridLines ()
 
 void MainWindow::slotViewGroupBackground(QAction *action)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotViewGroupBackground";
 
   // Set the combobox
   BackgroundImage backgroundImage;
@@ -3191,14 +3090,12 @@ void MainWindow::slotViewGroupBackground(QAction *action)
 
 void MainWindow::slotViewGroupCurves(QAction * /* action */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotViewGroupCurves";
 
   updateViewedCurves ();
 }
 
 void MainWindow::slotViewGroupStatus(QAction *action)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotViewGroupStatus";
 
   ENGAUGE_CHECK_PTR (m_statusBar); // At startup, make sure status bar is already set up when View menu gets initialized
 
@@ -3220,7 +3117,6 @@ void MainWindow::slotViewGuidelines ()
 
 void MainWindow::slotViewToolBarBackground ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotViewToolBarBackground";
 
   if (m_actionViewBackgroundToolBar->isChecked ()) {
     m_toolBackground->show();
@@ -3231,7 +3127,6 @@ void MainWindow::slotViewToolBarBackground ()
 
 void MainWindow::slotViewToolBarCoordSystem ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotViewToolBarCoordSystem";
 
   if (m_actionViewCoordSystemToolBar->isChecked ()) {
     m_toolCoordSystem->show();
@@ -3242,7 +3137,6 @@ void MainWindow::slotViewToolBarCoordSystem ()
 
 void MainWindow::slotViewToolBarDigitize ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotViewToolBarDigitize";
 
   if (m_actionViewDigitizeToolBar->isChecked ()) {
     m_toolDigitize->show();
@@ -3253,7 +3147,6 @@ void MainWindow::slotViewToolBarDigitize ()
 
 void MainWindow::slotViewToolBarSettingsViews ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotViewToolBarSettingsViews";
 
   if (m_actionViewSettingsViewsToolBar->isChecked ()) {
     m_toolSettingsViews->show();
@@ -3264,14 +3157,12 @@ void MainWindow::slotViewToolBarSettingsViews ()
 
 void MainWindow::slotViewToolTips ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotViewToolTips";
 
   loadToolTips();
 }
 
 void MainWindow::slotViewWindowChecklistGuide ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotViewWindowChecklistGuide";
 
   if (m_actionViewChecklistGuideWindow->isChecked ()) {
     m_dockChecklistGuide->show();
@@ -3282,7 +3173,6 @@ void MainWindow::slotViewWindowChecklistGuide ()
 
 void MainWindow::slotViewWindowFitting()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotViewWindowFitting";
 
   if (m_actionViewFittingWindow->isChecked()) {
     m_dockFittingWindow->show ();
@@ -3299,7 +3189,6 @@ void MainWindow::slotViewWindowFitting()
 
 void MainWindow::slotViewWindowGeometry ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotViewWindowGeometry";
 
   if (m_actionViewGeometryWindow->isChecked ()) {
     m_dockGeometryWindow->show();
@@ -3310,7 +3199,6 @@ void MainWindow::slotViewWindowGeometry ()
 
 void MainWindow::slotViewZoom (int zoom)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotViewZoom";
 
   // Update zoom controls and apply the zoom factor
   ZoomFactor zoomFactor = static_cast<ZoomFactor> (zoom);
@@ -3320,7 +3208,6 @@ void MainWindow::slotViewZoom (int zoom)
 
 void MainWindow::slotViewZoomFactor (ZoomFactor zoomFactor)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotViewZoomFactor";
 
   if (zoomFactor == ZOOM_FILL) {
       m_backgroundStateContext->fitInView (*m_view);
@@ -3339,14 +3226,12 @@ void MainWindow::slotViewZoomFactor (ZoomFactor zoomFactor)
 
 void MainWindow::slotViewZoomFactorInt (int zoom)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotViewZoomFactorInt";
 
   slotViewZoomFactor (static_cast<ZoomFactor> (zoom));
 }
 
 void MainWindow::slotViewZoomIn ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotViewZoomIn";
 
   ZoomTransition zoomTransition;
   ZoomFactor zoomFactorNew = zoomTransition.zoomIn (currentZoomFactor (),
@@ -3359,7 +3244,6 @@ void MainWindow::slotViewZoomIn ()
 
 void MainWindow::slotViewZoomInFromWheelEvent ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotViewZoomInFromWheelEvent";
 
   if ((m_modelMainWindow.zoomControl() == ZOOM_CONTROL_MENU_WHEEL) ||
       (m_modelMainWindow.zoomControl() == ZOOM_CONTROL_MENU_WHEEL_PLUSMINUS)) {
@@ -3376,7 +3260,6 @@ void MainWindow::slotViewZoomInFromWheelEvent ()
 
 void MainWindow::slotViewZoomOut ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotViewZoomOut";
 
   // Try to zoom out
   ZoomTransition zoomTransition;
@@ -3389,7 +3272,6 @@ void MainWindow::slotViewZoomOut ()
 
 void MainWindow::slotViewZoomOutFromWheelEvent ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::slotViewZoomOutFromWheelEvent";
 
   if ((m_modelMainWindow.zoomControl() == ZOOM_CONTROL_MENU_WHEEL) ||
       (m_modelMainWindow.zoomControl() == ZOOM_CONTROL_MENU_WHEEL_PLUSMINUS)) {
@@ -3406,7 +3288,6 @@ void MainWindow::slotViewZoomOutFromWheelEvent ()
 
 void MainWindow::startRegressionDropTest (const QStringList &loadStartupFiles)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::startRegressionTestErrorReport";
 
   // Regression testing of drag and drop has some constraints:
   // 1) Need graphics window (GraphicsView) or else its events will not work. This is why
@@ -3450,7 +3331,6 @@ void MainWindow::startRegressionDropTest (const QStringList &loadStartupFiles)
 
 void MainWindow::startRegressionTestErrorReport(const QString &regressionInputFile)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::startRegressionTestErrorReport";
 
   // In order for point-deleting commands to work (CmdCut, CmdDelete) in the regression tests, we need to
   // reset the Point identifier index here:
@@ -3471,7 +3351,6 @@ void MainWindow::startRegressionTestErrorReport(const QString &regressionInputFi
 
 void MainWindow::startRegressionTestFileCmdScript()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::startRegressionTestFileCmdScript";
 
   delete m_timerRegressionFileCmdScript;
   m_timerRegressionFileCmdScript = new QTimer();
@@ -3493,7 +3372,6 @@ bool MainWindow::transformIsDefined() const
 
 void MainWindow::updateAfterCommand ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateAfterCommand";
 
   ENGAUGE_CHECK_PTR (m_cmdMediator);
 
@@ -3526,7 +3404,6 @@ void MainWindow::updateAfterCommand ()
 
 void MainWindow::updateAfterCommandStatusBarCoords ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateAfterCommandStatusBarCoords";
 
   // For some reason, mapFromGlobal(QCursor::pos) differs from event->pos by a little bit. We must compensate for
   // this so cursor coordinates in status bar match the DlgEditPointAxis inputs initially. After the mouse moves
@@ -3573,14 +3450,12 @@ void MainWindow::updateAfterCommandStatusBarCoords ()
 
 void MainWindow::updateAfterMouseRelease ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateAfterMouseRelease";
 
   updateControls ();
 }
 
 void MainWindow::updateChecklistGuide ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateChecklistGuide";
 
   m_dockChecklistGuide->update (*m_cmdMediator,
                                 m_isDocumentExported);
@@ -3588,7 +3463,6 @@ void MainWindow::updateChecklistGuide ()
 
 void MainWindow::updateControls ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateControls"
                               << " selectedItems=" << m_scene->selectedItems().count();
 
   m_cmbBackground->setEnabled (!m_currentFile.isEmpty ());
@@ -3674,7 +3548,6 @@ void MainWindow::updateControls ()
 
 void MainWindow::updateCoordSystem(CoordSystemIndex coordSystemIndex)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateCoordSystem";
 
   // If this is from undo/redo playback then combobox must be updated
   if ((CoordSystemIndex) m_cmbCoordSystem->currentIndex() != coordSystemIndex) {
@@ -3699,7 +3572,6 @@ void MainWindow::updateCoordSystem(CoordSystemIndex coordSystemIndex)
 
 void MainWindow::updateDigitizeStateIfSoftwareTriggered (DigitizeState digitizeState)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateDigitizeStateIfSoftwareTriggered";
 
   switch (digitizeState) {
     case DIGITIZE_STATE_AXIS:
@@ -3748,7 +3620,6 @@ void MainWindow::updateDigitizeStateIfSoftwareTriggered (DigitizeState digitizeS
 
 void MainWindow::updateFittingWindow ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateFittingWindow";
 
   if (m_cmdMediator != nullptr &&
       m_cmbCurve != nullptr) {
@@ -3763,7 +3634,6 @@ void MainWindow::updateFittingWindow ()
 
 void MainWindow::updateGeometryWindow ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateGeometryWindow";
 
   if (m_cmdMediator != nullptr &&
       m_cmbCurve != nullptr) {
@@ -3778,7 +3648,6 @@ void MainWindow::updateGeometryWindow ()
 
 void MainWindow::updateGraphicsLinesToMatchGraphicsPoints()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateGraphicsLinesToMatchGraphicsPoints";
 
   m_scene->updateGraphicsLinesToMatchGraphicsPoints(m_cmdMediator->document().modelCurveStyles(),
                                                     m_transformation);
@@ -3786,7 +3655,6 @@ void MainWindow::updateGraphicsLinesToMatchGraphicsPoints()
 
 void MainWindow::updateGridLines ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateGridLines";
 
   // Remove old grid lines
   m_gridLines.clear ();
@@ -3805,7 +3673,6 @@ void MainWindow::updateGridLines ()
 
 void MainWindow::updateGuidelines ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateGuidelines";
 
   // Remove old guidelines
   m_guidelines.clear ();
@@ -3833,7 +3700,6 @@ void MainWindow::updateHighlightOpacity ()
 
 void MainWindow::updateRecentFileList()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateRecentFileList";
 
 #if !defined(OSX_DEBUG) && !defined(OSX_RELEASE)
   QSettings settings (SETTINGS_ENGAUGE, SETTINGS_DIGITIZER);
@@ -3863,7 +3729,6 @@ void MainWindow::updateRecentFileList()
 
 void MainWindow::updateSettingsAxesChecker(const DocumentModelAxesChecker &modelAxesChecker)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateSettingsAxesChecker";
 
   m_cmdMediator->document().setModelAxesChecker(modelAxesChecker);
   if (m_transformation.transformIsDefined()) {
@@ -3883,7 +3748,6 @@ void MainWindow::updateSettingsAxesChecker(const DocumentModelAxesChecker &model
 
 void MainWindow::updateSettingsColorFilter(const DocumentModelColorFilter &modelColorFilter)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateSettingsColorFilter";
 
   m_cmdMediator->document().setModelColorFilter(modelColorFilter);
   m_backgroundStateContext->updateColorFilter (m_isGnuplot,
@@ -3897,14 +3761,12 @@ void MainWindow::updateSettingsColorFilter(const DocumentModelColorFilter &model
 
 void MainWindow::updateSettingsCoords(const DocumentModelCoords &modelCoords)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateSettingsCoords";
 
   m_cmdMediator->document().setModelCoords(modelCoords);
 }
 
 void MainWindow::updateSettingsCurveList (const CurvesGraphs &curvesGraphs)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateSettingsCurveList";
 
   m_cmdMediator->document().setCurvesGraphs (curvesGraphs);
   loadCurveListFromCmdMediator();
@@ -3913,7 +3775,6 @@ void MainWindow::updateSettingsCurveList (const CurvesGraphs &curvesGraphs)
 
 void MainWindow::updateSettingsCurveStyles(const CurveStyles &modelCurveStyles)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateSettingsCurveStyles";
 
   m_scene->updateCurveStyles(modelCurveStyles);
   m_cmdMediator->document().setModelCurveStyles(modelCurveStyles);
@@ -3922,7 +3783,6 @@ void MainWindow::updateSettingsCurveStyles(const CurveStyles &modelCurveStyles)
 
 void MainWindow::updateSettingsDigitizeCurve(const DocumentModelDigitizeCurve &modelDigitizeCurve)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateSettingsDigitizeCurve";
 
   m_cmdMediator->document().setModelDigitizeCurve(modelDigitizeCurve);
   m_digitizeStateContext->updateModelDigitizeCurve (m_cmdMediator,
@@ -3931,21 +3791,18 @@ void MainWindow::updateSettingsDigitizeCurve(const DocumentModelDigitizeCurve &m
 
 void MainWindow::updateSettingsExportFormat(const DocumentModelExportFormat &modelExport)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateSettingsExportFormat";
 
   m_cmdMediator->document().setModelExport (modelExport);
 }
 
 void MainWindow::updateSettingsGeneral(const DocumentModelGeneral &modelGeneral)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateSettingsGeneral";
 
   m_cmdMediator->document().setModelGeneral(modelGeneral);
 }
 
 void MainWindow::updateSettingsGridDisplay(const DocumentModelGridDisplay &modelGridDisplay)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateSettingsGridDisplay";
 
   m_cmdMediator->document().setModelGridDisplay(modelGridDisplay);
   updateGridLines ();
@@ -3953,14 +3810,12 @@ void MainWindow::updateSettingsGridDisplay(const DocumentModelGridDisplay &model
 
 void MainWindow::updateSettingsGridRemoval(const DocumentModelGridRemoval &modelGridRemoval)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateSettingsGridRemoval";
 
   m_cmdMediator->document().setModelGridRemoval(modelGridRemoval);
 }
 
 void MainWindow::updateSettingsGuideline (const DocumentModelGuideline &modelGuideline)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateSettingsGuideline";
 
   m_cmdMediator->document().setModelGuideline (modelGuideline);
   loadGuidelinesFromCmdMediator();
@@ -3968,7 +3823,6 @@ void MainWindow::updateSettingsGuideline (const DocumentModelGuideline &modelGui
 
 void MainWindow::updateSettingsMainWindow()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateSettingsMainWindow";
 
   if (m_modelMainWindow.zoomControl() == ZOOM_CONTROL_MENU_ONLY ||
       m_modelMainWindow.zoomControl() == ZOOM_CONTROL_MENU_WHEEL) {
@@ -3997,7 +3851,6 @@ void MainWindow::updateSettingsMainWindow()
 
 void MainWindow::updateSettingsMainWindow(const MainWindowModel &modelMainWindow)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateSettingsMainWindow";
 
   m_modelMainWindow = modelMainWindow;
   updateSettingsMainWindow();
@@ -4005,14 +3858,12 @@ void MainWindow::updateSettingsMainWindow(const MainWindowModel &modelMainWindow
 
 void MainWindow::updateSettingsPointMatch(const DocumentModelPointMatch &modelPointMatch)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateSettingsPointMatch";
 
   m_cmdMediator->document().setModelPointMatch(modelPointMatch);
 }
 
 void MainWindow::updateSettingsSegments(const DocumentModelSegments &modelSegments)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateSettingsSegments";
 
   m_digitizeStateContext->updateModelSegments(modelSegments);
   m_cmdMediator->document().setModelSegments(modelSegments);
@@ -4059,7 +3910,6 @@ void MainWindow::updateTransformationAndItsDependencies()
 
 void MainWindow::updateViewedCurves ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateViewedCurves";
 
   if (m_actionViewCurvesAll->isChecked ()) {
 
@@ -4081,7 +3931,6 @@ void MainWindow::updateViewedCurves ()
 
 void MainWindow::updateViewsOfSettings ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateViewsOfSettings";
 
   QString activeCurve = m_digitizeStateContext->activeCurve ();
 
@@ -4110,7 +3959,6 @@ void MainWindow::updateViewsOfSettings (const QString &activeCurve)
 
 void MainWindow::updateWindowTitle ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::updateWindowTitle";
 
   const QString PLACEHOLDER ("[*]");
 

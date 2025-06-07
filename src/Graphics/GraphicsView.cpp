@@ -73,7 +73,6 @@ GraphicsView::~GraphicsView()
 
 void GraphicsView::contextMenuEvent(QContextMenuEvent *event)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsView::contextMenuEvent"
                               << " selectedCount=" << scene()->selectedItems().count();
 
   GraphicsItemsExtractor graphicsItemsExtractor;
@@ -102,7 +101,6 @@ void GraphicsView::contextMenuEvent(QContextMenuEvent *event)
 
 void GraphicsView::dragEnterEvent (QDragEnterEvent *event)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsView::dragEnterEvent " << (event->mimeData ()->hasUrls () ? "urls" : "non-urls");
 
   if (event->mimeData ()->hasImage () ||
       event->mimeData ()->hasUrls ()) {
@@ -112,7 +110,6 @@ void GraphicsView::dragEnterEvent (QDragEnterEvent *event)
 
 void GraphicsView::dragMoveEvent (QDragMoveEvent *event)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsView::dragMoveEvent";
 
   if (event->mimeData ()->hasImage () ||
       event->mimeData ()->hasUrls ()) {
@@ -122,7 +119,6 @@ void GraphicsView::dragMoveEvent (QDragMoveEvent *event)
 
 void GraphicsView::dropEvent (QDropEvent *event)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsView::dropEvent";
 
   // Urls from text/uri-list
   QList<QUrl> urlList = event->mimeData ()->urls ();
@@ -151,7 +147,6 @@ void GraphicsView::dropEvent (QDropEvent *event)
 
   } else {
 
-    LOG4CPP_INFO_S ((*mainCat)) << "GraphicsView::dropEvent dropped";
     QGraphicsView::dropEvent (event);
   }
 }
@@ -168,7 +163,6 @@ bool GraphicsView::handleDropEvent (const QString &possibleDigFileName,
   if (loadFileInfo.loadsAsDigFile (possibleDigFileName)) {
 
     // Branch that applies when a dig file name has been dropped
-    LOG4CPP_INFO_S ((*mainCat)) << "QGraphicsView::handleDropEvent dig file";
     UrlDirty url (possibleDigFileName);
     emit signalDraggedDigFile (url.toLocalFile());
     willAccept = true;
@@ -176,14 +170,12 @@ bool GraphicsView::handleDropEvent (const QString &possibleDigFileName,
   } else if (hasImage) {
 
     // Branch that applies when an image selected within another application (e.g. LibreOffice Draw) has been dropped
-    LOG4CPP_INFO_S ((*mainCat)) << "GraphicsView::handleDropEvent image";
     emit signalDraggedImage (image);
     willAccept = true;
 
   } else if (hasUrl) {
 
     // Branch that applies when a local file name or internet url has been dropped
-    LOG4CPP_INFO_S ((*mainCat)) << "GraphicsView::handleDropEvent url=" << urlFirst.toString ().toLatin1 ().data ();
     emit signalDraggedImageUrl (urlFirst);
     willAccept = true;
   }
@@ -337,7 +329,6 @@ void GraphicsView::wheelEvent(QWheelEvent *event)
 
   QPoint numDegrees = event->angleDelta() / DELTAS_PER_DEGREE;
 
-  LOG4CPP_INFO_S ((*mainCat)) << "MainWindow::wheelEvent"
                               << " degrees=" << numDegrees.y()
                               << " phase=" << event->phase();
 

@@ -192,7 +192,6 @@ bool Jpeg2000::invalidFileExtension (const QString &filename) const
 bool Jpeg2000::load (const QString &filename,
                      QImage &imageResult) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Jpeg2000::load"
                               << " filename=" << filename.toLatin1().data();
 
   if (invalidFileExtension (filename)) {

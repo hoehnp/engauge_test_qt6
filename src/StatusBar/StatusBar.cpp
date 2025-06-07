@@ -311,7 +311,6 @@ void StatusBar::slotStatusBarChanged(const QString &message)
 
 void StatusBar::slotTimeout()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "StatusBar::slotTimeout";
 
   delete m_timer;
   m_timer = nullptr;
@@ -321,7 +320,6 @@ void StatusBar::slotTimeout()
 
 void StatusBar::slotZoom(int zoom)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "StatusBar::slotZoom zoom=" << zoom;
 
   // Show string for the numeric zoom value
   ZoomFactor zoomFactor = static_cast<ZoomFactor> (zoom);

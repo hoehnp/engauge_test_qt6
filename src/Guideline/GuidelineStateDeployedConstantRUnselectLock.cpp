@@ -23,7 +23,6 @@ GuidelineStateDeployedConstantRUnselectLock::~GuidelineStateDeployedConstantRUns
 
 void GuidelineStateDeployedConstantRUnselectLock::begin ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateDeployedConstantRUnselectLock::begin"
                               << " identifier=" << context().guideline().identifier().toLatin1().data();
 
   beginCommon (false,
@@ -39,7 +38,6 @@ bool GuidelineStateDeployedConstantRUnselectLock::doPaint () const
 
 void GuidelineStateDeployedConstantRUnselectLock::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateDeployedConstantRUnselectLock::end";
 }
 
 void GuidelineStateDeployedConstantRUnselectLock::handleActiveChange (bool active)

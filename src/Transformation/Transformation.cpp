@@ -62,7 +62,6 @@ QTransform Transformation::calculateTransformFromLinearCartesianPoints (const QP
                                                                         const QPointF &posTo1,
                                                                         const QPointF &posTo2)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Transformation::calculateTransformFromLinearCartesianPoints";
 
   QTransform from, to;
   from.setMatrix (posFrom0.x(), posFrom1.x(), posFrom2.x(),
@@ -308,7 +307,6 @@ void Transformation::printStream (QString indentation,
 
 void Transformation::resetOnLoad()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Transformation::resetOnLoad";
 
   m_transformIsDefined = false;
 }
@@ -498,7 +496,6 @@ void Transformation::update (bool fileIsLoaded,
 void Transformation::updateTransformFromMatrices (const QTransform &matrixScreen,
                                                   const QTransform &matrixGraph)
 {
-  // LOG4CPP_INFO_S is below
 
   m_transformIsDefined = true;
 
@@ -551,7 +548,6 @@ void Transformation::updateTransformFromMatrices (const QTransform &matrixScreen
   QPointF pointScreen2 (matrixScreen.m13(),
                         matrixScreen.m23());
 
-  LOG4CPP_INFO_S ((*mainCat)) << "Transformation::updateTransformFromMatrices"
                               << " matrixScreen=\n" << QTransformToString (matrixScreen).toLatin1().data () << " "
                               << " matrixGraphRaw=\n" << QTransformToString (matrixGraph).toLatin1().data() << " "
                               << " matrixGraphLinear=\n" << QTransformToString (matrixGraphLinear).toLatin1().data() << "\n"

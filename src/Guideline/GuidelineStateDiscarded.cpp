@@ -24,7 +24,6 @@ GuidelineStateDiscarded::~GuidelineStateDiscarded ()
 
 void GuidelineStateDiscarded::begin ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateDiscarded::begin"
                               << " identifier=" << context().guideline().identifier().toLatin1().data();
 
   context().guideline().setGraphicsItemZValue (Z_VALUE_GUIDELINE_DISCARDED);
@@ -60,7 +59,6 @@ bool GuidelineStateDiscarded::doPaint () const
 
 void GuidelineStateDiscarded::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateDiscarded::end";
 }
 
 void GuidelineStateDiscarded::handleActiveChange (bool /* active */)

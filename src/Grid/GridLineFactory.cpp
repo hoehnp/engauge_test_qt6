@@ -243,7 +243,6 @@ void GridLineFactory::createTransformAlign (const Transformation &transformation
                                             double &ellipseXAxis,
                                             double &ellipseYAxis) const
 {
-  // LOG4CPP_INFO_S is below
 
   // Compute a minimal transformation that aligns the graph x and y axes with the screen x and y axes. Specifically, shear,
   // translation and rotation are allowed but not scaling. Scaling is bad since it messes up the line thickness of the drawn arc.
@@ -281,7 +280,6 @@ void GridLineFactory::createTransformAlign (const Transformation &transformation
                                                                                 posX0YRadiusAlignedScreen);
 
   // Use \n rather than endl to prevent compiler warning "nonnull argument t compared to null"
-  LOG4CPP_INFO_S ((*mainCat)) << "GridLineFactory::createTransformAlign"
                               << " transformation=" << QTransformToString (transformation.transformMatrix()).toLatin1().data() << "\n"
                               << " radiusLinearCartesian=" << radiusLinearCartesian
                               << " posXRadiusY0Screen=" << QPointFToString (posXRadiusY0Screen).toLatin1().data()
@@ -298,7 +296,6 @@ QGraphicsItem *GridLineFactory::ellipseItem (const Transformation &transformatio
                                              const QPointF &posStartScreen,
                                              const QPointF &posEndScreen) const
 {
-  // LOG4CPP_INFO_S is below
 
   QPointF posStartGraph, posEndGraph;
 
@@ -320,7 +317,6 @@ QGraphicsItem *GridLineFactory::ellipseItem (const Transformation &transformatio
   transformation.transformLinearCartesianGraphToScreen (posOriginGraph,
                                                         posOriginScreen);
 
-  LOG4CPP_INFO_S ((*mainCat)) << "GridLineFactory::ellipseItem"
                               << " radiusLinearCartesian=" << radiusLinearCartesian
                               << " posStartScreen=" << QPointFToString (posStartScreen).toLatin1().data()
                               << " posEndScreen=" << QPointFToString (posEndScreen).toLatin1().data()

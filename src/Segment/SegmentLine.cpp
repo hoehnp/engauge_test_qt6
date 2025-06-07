@@ -46,21 +46,18 @@ SegmentLine::~SegmentLine ()
 
 void SegmentLine::hoverEnterEvent(QGraphicsSceneHoverEvent * /* event */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "SegmentLine::hoverEnterEvent";
 
   emit (signalHover (true));
 }
 
 void SegmentLine::hoverLeaveEvent(QGraphicsSceneHoverEvent * /* event */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "SegmentLine::hoverLeaveEvent";
 
   emit (signalHover (false));
 }
 
 void SegmentLine::mousePressEvent(QGraphicsSceneMouseEvent * /* event */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "SegmentLine::mousePressEvent";
 
   m_segment->forwardMousePress();
 }
@@ -94,7 +91,6 @@ void SegmentLine::setHover (bool hover)
 
 void SegmentLine::updateModelSegment(const DocumentModelSegments &modelSegments)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "SegmentLine::updateModelSegment";
 
   m_modelSegments = modelSegments;
 }

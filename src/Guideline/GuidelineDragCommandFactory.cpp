@@ -27,7 +27,6 @@ CmdAbstract *GuidelineDragCommandFactory::createAfterDrag (MainWindow &mainWindo
                                                            const QString &identifier,
                                                            bool draggedOffscreen)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineDragCommandFactory::GuidelineDragCommandFactory";
 
   GuidelineValues valuesXDocument = modelGuidelineDocument.valuesX ();
   GuidelineValues valuesYDocument = modelGuidelineDocument.valuesY ();

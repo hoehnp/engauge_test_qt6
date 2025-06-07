@@ -39,7 +39,6 @@ GuidelineAbstract::~GuidelineAbstract ()
 
 void GuidelineAbstract::bindGuidelineVisibleToInvisible (GuidelineAbstract *guidelineVisible)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineAbstract::bindGuidelineVisibleToInvisible";
 
   m_guidelineVisible = guidelineVisible;
 
@@ -81,7 +80,6 @@ void GuidelineAbstract::handleHoverLeaveEvent()
 
 void GuidelineAbstract::handleMouseMoveEvent (const QPointF &posScene)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineAbstract::handleMouseMoveEvent ("
                               << posScene.x() << ", " << posScene.y() << ")";
 
   // Skip if there is no bound visible Guideline

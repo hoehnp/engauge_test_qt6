@@ -32,7 +32,6 @@ void GraphicsLinesForCurves::addPoint (const QString &curveName,
                                        double ordinal,
                                        GraphicsPoint &point)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurves::addPoint"
                               << " curve=" << curveName.toLatin1().data()
                               << " identifier=" << pointIdentifier.toLatin1().data()
                               << " ordinal=" << ordinal
@@ -46,7 +45,6 @@ void GraphicsLinesForCurves::addPoint (const QString &curveName,
 void GraphicsLinesForCurves::addRemoveCurves (GraphicsScene &scene,
                                               const QStringList &curveNames)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurves::addRemoveCurves"
                               << " curveCount=" << m_graphicsLinesForCurve.count();
 
   // Add new curves
@@ -87,7 +85,6 @@ void GraphicsLinesForCurves::lineMembershipPurge(const CurveStyles &curveStyles,
                                                  QPainterPath &pathMultiValued,
                                                  LineStyle &lineMultiValued)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurves::lineMembershipPurge";
 
   GraphicsLinesContainer::const_iterator itr;
   for (itr = m_graphicsLinesForCurve.begin (); itr != m_graphicsLinesForCurve.end (); itr++) {
@@ -104,7 +101,6 @@ void GraphicsLinesForCurves::lineMembershipPurge(const CurveStyles &curveStyles,
 
 void GraphicsLinesForCurves::lineMembershipReset()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurves::lineMembershipReset";
 
   GraphicsLinesContainer::const_iterator itr;
   for (itr = m_graphicsLinesForCurve.begin (); itr != m_graphicsLinesForCurve.end (); itr++) {
@@ -143,7 +139,6 @@ void GraphicsLinesForCurves::printStream (QString indentation,
 
 void GraphicsLinesForCurves::removePoint(const QString &identifier)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurves::removePoint"
                               << " point=" << identifier.toLatin1().data ()
                               << " curveCount=" << m_graphicsLinesForCurve.count();
 
@@ -156,7 +151,6 @@ void GraphicsLinesForCurves::removePoint(const QString &identifier)
 
 void GraphicsLinesForCurves::removeTemporaryPointIfExists()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurves::removeTemporaryPointIfExists";
 
   QString curveName = Point::curveNameFromPointIdentifier(Point::temporaryPointIdentifier());
 
@@ -166,7 +160,6 @@ void GraphicsLinesForCurves::removeTemporaryPointIfExists()
 
 void GraphicsLinesForCurves::resetOnLoad()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurves::resetOnLoad";
 
   GraphicsLinesContainer::iterator itr;
   for (itr = m_graphicsLinesForCurve.begin(); itr != m_graphicsLinesForCurve.end(); itr++) {
@@ -196,7 +189,6 @@ void GraphicsLinesForCurves::updateAfterCommand (GraphicsScene &scene,
 
 void GraphicsLinesForCurves::updateCurveStyles (const CurveStyles &modelCurveStyles)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurves::updateCurveStyles";
 
   GraphicsLinesContainer::const_iterator itr;
   for (itr = m_graphicsLinesForCurve.begin (); itr != m_graphicsLinesForCurve.end (); itr++) {
@@ -212,7 +204,6 @@ void GraphicsLinesForCurves::updateGraphicsLinesToMatchGraphicsPoints (const Cur
                                                                        QPainterPath &pathMultiValued,
                                                                        LineStyle &lineMultiValued)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurves::updateGraphicsLinesToMatchGraphicsPoints";
 
   GraphicsLinesContainer::const_iterator itr;
   for (itr = m_graphicsLinesForCurve.begin (); itr != m_graphicsLinesForCurve.end (); itr++) {
@@ -232,7 +223,6 @@ void GraphicsLinesForCurves::updateGraphicsLinesToMatchGraphicsPoints (const Cur
 
 void GraphicsLinesForCurves::updateHighlightOpacity (double highlightOpacity)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurves::updateHighlightOpacity"
                               << " highlightOpacity=" << highlightOpacity;
 
   GraphicsLinesContainer::const_iterator itr;
@@ -247,7 +237,6 @@ void GraphicsLinesForCurves::updateHighlightOpacity (double highlightOpacity)
 void GraphicsLinesForCurves::updatePointOrdinalsAfterDrag (const CurveStyles &curveStyles,
                                                            const Transformation &transformation)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsLinesForCurves::updatePointOrdinalsAfterDrag";
 
   GraphicsLinesContainer::const_iterator itr;
   for (itr = m_graphicsLinesForCurve.begin (); itr != m_graphicsLinesForCurve.end (); itr++) {

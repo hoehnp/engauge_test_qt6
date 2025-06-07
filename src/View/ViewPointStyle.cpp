@@ -22,7 +22,6 @@ ViewPointStyle::ViewPointStyle(QWidget *parent) :
 
 QPixmap ViewPointStyle::pixmapForCurrentSettings () const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ViewPointStyle::pixmapForCurrentSettings";
 
   // Polygon that is sized for the main drawing window.
   QPolygonF polygonUnscaled = m_pointStyle.polygon();
@@ -71,7 +70,6 @@ QPixmap ViewPointStyle::pixmapForCurrentSettings () const
 
 void ViewPointStyle::setEnabled (bool enabled)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ViewPointStyle::setEnabled"
                               << " enabled=" << (enabled ? "true" : "false");
 
   m_enabled = enabled;
@@ -80,7 +78,6 @@ void ViewPointStyle::setEnabled (bool enabled)
 
 void ViewPointStyle::setPointStyle (const PointStyle &pointStyle)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ViewPointStyle::setPointStyle";
 
   m_pointStyle = pointStyle;
   setPixmap (pixmapForCurrentSettings ());
@@ -88,7 +85,6 @@ void ViewPointStyle::setPointStyle (const PointStyle &pointStyle)
 
 void ViewPointStyle::unsetPointStyle ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ViewPointStyle::unsetPointStyle";
 
   QPixmap pEmpty (width (),
                   height ());

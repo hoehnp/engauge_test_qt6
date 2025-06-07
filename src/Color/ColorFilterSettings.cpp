@@ -176,7 +176,6 @@ int ColorFilterSettings::intensityLow () const
 
 void ColorFilterSettings::loadXml(QXmlStreamReader &reader)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ColorFilterSettings::loadXml";
 
   bool success = true;
 
@@ -263,7 +262,6 @@ int ColorFilterSettings::saturationLow () const
 void ColorFilterSettings::saveXml(QXmlStreamWriter &writer,
                                   const QString &curveName) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "ColorFilterSettings::saveXml";
 
   writer.writeStartElement(DOCUMENT_SERIALIZE_COLOR_FILTER);
   writer.writeAttribute(DOCUMENT_SERIALIZE_CURVE_NAME, curveName);

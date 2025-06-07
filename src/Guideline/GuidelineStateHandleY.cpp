@@ -25,7 +25,6 @@ GuidelineStateHandleY::~GuidelineStateHandleY ()
 
 void GuidelineStateHandleY::begin ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateHandleY::begin"
                               << " identifier=" << context().guideline().identifier().toLatin1().data();
 
   beginCommon ();
@@ -59,7 +58,6 @@ double GuidelineStateHandleY::convertScreenPointToGraphCoordinate(const QPointF 
 
 void GuidelineStateHandleY::end ()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineStateHandleY::end";
 }
 
 void GuidelineStateHandleY::handleMouseRelease (const QPointF &posScene)

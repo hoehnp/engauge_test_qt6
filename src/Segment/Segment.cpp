@@ -205,7 +205,6 @@ void Segment::dumpToGnuplot (QTextStream &strDump,
 
 QList<QPoint> Segment::fillPoints(const DocumentModelSegments &modelSegments)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Segment::fillPoints";
 
   if (modelSegments.fillCorners()) {
     return fillPointsFillingCorners(modelSegments);
@@ -281,7 +280,6 @@ QList<QPoint> Segment::fillPointsFillingCorners(const DocumentModelSegments &mod
 
 QPointF Segment::firstPoint () const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Segment::firstPoint"
                               << " lineCount=" << m_lines.count();
 
   // There has to be at least one SegmentLine since this only gets called when a SegmentLine is clicked on
@@ -290,7 +288,6 @@ QPointF Segment::firstPoint () const
   SegmentLine *line = m_lines.first();
   QPointF pos = line->line().p1();
 
-  LOG4CPP_INFO_S ((*mainCat)) << "Segment::firstPoint"
                               << " pos=" << QPointFToString (pos).toLatin1().data();
 
   return pos;
@@ -298,7 +295,6 @@ QPointF Segment::firstPoint () const
 
 void Segment::forwardMousePress()
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Segment::forwardMousePress"
                               << " segmentLines=" << m_lines.count();
 
   emit signalMouseClickOnSegment (firstPoint ());
@@ -431,7 +427,6 @@ bool Segment::pointsAreCloseToLine(double xLeft,
 
 void Segment::removeUnneededLines (int *foldedLines)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Segment::removeUnneededLines";
 
   QFile *fileDump = nullptr;
   QTextStream *strDump = nullptr;
@@ -538,7 +533,6 @@ void Segment::removeUnneededLines (int *foldedLines)
 
 void Segment::slotHover (bool hover)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Segment::slotHover";
 
   QList<SegmentLine*>::iterator itr, itrPrevious;
   for (itr = m_lines.begin(); itr != m_lines.end(); itr++) {
@@ -550,7 +544,6 @@ void Segment::slotHover (bool hover)
 
 void Segment::updateModelSegment(const DocumentModelSegments &modelSegments)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Segment::updateModelSegment";
 
   QList<SegmentLine*>::iterator itr;
   for (itr = m_lines.begin(); itr != m_lines.end(); itr++) {

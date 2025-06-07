@@ -248,7 +248,6 @@ void GuidelineEllipse::updateGeometry (double valueGraph)
 
 void GuidelineEllipse::updateGeometry (const QPointF &posScreen)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GuidelineEllipse::updateGeometry scale=" << scale()
                               << " rotation(deg)=" << rotation();
 
   EllipseParameters ellipseParameters = context()->pointToEllipse (posScreen);

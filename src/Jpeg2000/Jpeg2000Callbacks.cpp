@@ -16,7 +16,6 @@ void errorCallback (const char *msg,
 void infoCallback (const char *msg,
                    void */* clientData */)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "Jpeg2000Callbacks::infoCallback " << msg;
 }
 
 void warningCallback (const char *msg,

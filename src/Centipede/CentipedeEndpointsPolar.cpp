@@ -115,11 +115,6 @@ void CentipedeEndpointsPolar::ellipseScreenConstantRForTHighLowAngles (const Tra
                          2.0 * aAligned,
                          2.0 * bAligned);
 
-  LOG4CPP_INFO_S ((*mainCat)) << "CentipedeEndpointsPolar::ellipseScreenConstantRForTHighLowAngles angleRotation="
-                              << qRadiansToDegrees (angleRotation) << " posScreen0=" << QPointFToString (posScreen0).toLatin1().data()
-                              << " posScreen90=" << QPointFToString (posScreen90).toLatin1().data()
-                              << " a=" << aAligned
-                              << " b=" << bAligned;
 }
 
 void CentipedeEndpointsPolar::generatePreviousAndNextPointsConstantR (double radiusAboutClick,

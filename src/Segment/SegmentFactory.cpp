@@ -23,7 +23,6 @@ SegmentFactory::SegmentFactory(QGraphicsScene &scene,
   m_scene (scene),
   m_isGnuplot (isGnuplot)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "SegmentFactory::SegmentFactory";
 }
 
 int SegmentFactory::adjacentRuns(bool *columnBool,
@@ -93,7 +92,6 @@ int SegmentFactory::adjacentSegments(SegmentVector &lastSegment,
 QList<QPoint> SegmentFactory::fillPoints(const DocumentModelSegments &modelSegments,
                                          QList<Segment*> segments)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "SegmentFactory::fillPoints";
 
   QList<QPoint> list;
   QList<Segment*>::iterator itr;
@@ -191,7 +189,6 @@ void SegmentFactory::makeSegments (const QImage &imageFiltered,
                                    QList<Segment*> &segments,
                                    bool useDlg)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "SegmentFactory::makeSegments";
 
   // Statistics that show up in debug spew
   int madeLines = 0;
@@ -282,7 +279,6 @@ void SegmentFactory::makeSegments (const QImage &imageFiltered,
 
   removeEmptySegments (segments);
 
-  LOG4CPP_INFO_S ((*mainCat)) << "SegmentFactory::makeSegments"
                                  << " linesCreated=" << madeLines
                                  << " linesTooShortSoRemoved=" << shortLines
                                  << " linesFoldedTogether=" << foldedLines;

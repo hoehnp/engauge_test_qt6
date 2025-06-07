@@ -58,7 +58,6 @@ bool GraphicsItemsExtractor::allSelectedItemsAreEitherAxisOrGraph (const QList<Q
 
 QStringList GraphicsItemsExtractor::selectedPointIdentifiers (const QList<QGraphicsItem*> &items) const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GraphicsScene::selectedPointIdentifiers"
                               << " selectedItems=" << items.count();
 
   QStringList selectedIds;

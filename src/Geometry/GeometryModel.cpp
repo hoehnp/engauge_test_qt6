@@ -56,7 +56,6 @@ QVariant GeometryModel::data(const QModelIndex &index, int role) const
 
 int GeometryModel::rowToBeHighlighted () const
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GeometryModel::rowToBeHighlighted"
                               << " rows=" << rowCount()
                               << " cols=" << columnCount();
 
@@ -82,7 +81,6 @@ int GeometryModel::rowToBeHighlighted () const
 
 void GeometryModel::setCurrentPointIdentifier (const QString &pointIdentifier)
 {
-  LOG4CPP_INFO_S ((*mainCat)) << "GeometryModel::setCurrentPointIdentifier"
                               << " rows=" << rowCount()
                               << " cols=" << columnCount()
                               << " identifier=" << pointIdentifier.toLatin1().data();
