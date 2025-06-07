@@ -25,8 +25,6 @@ GuidelineStateHandleR::~GuidelineStateHandleR ()
 
 void GuidelineStateHandleR::begin ()
 {
-                              << " identifier=" << context().guideline().identifier().toLatin1().data();
-
   beginCommon ();
 }
 

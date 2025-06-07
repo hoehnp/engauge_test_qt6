@@ -23,8 +23,6 @@ GuidelineStateDeployedConstantRUnselectLock::~GuidelineStateDeployedConstantRUns
 
 void GuidelineStateDeployedConstantRUnselectLock::begin ()
 {
-                              << " identifier=" << context().guideline().identifier().toLatin1().data();
-
   beginCommon (false,
                true);
 

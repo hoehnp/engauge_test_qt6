@@ -49,12 +49,6 @@ void Segment::appendColumn(int x,
   int xNew = x;
   int yNew = y;
 
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Segment::appendColumn"
-                               << " segment=0x" << std::hex << static_cast<void*> (this) << std::dec
-                               << " adding ("
-                               << xOld << "," << yOld << ") to ("
-                               << xNew << "," << yNew << ")";
-
   SegmentLine* line = new SegmentLine(m_scene,
                                       modelSegments,
                                       this);
@@ -280,23 +274,17 @@ QList<QPoint> Segment::fillPointsFillingCorners(const DocumentModelSegments &mod
 
 QPointF Segment::firstPoint () const
 {
-                              << " lineCount=" << m_lines.count();
-
   // There has to be at least one SegmentLine since this only gets called when a SegmentLine is clicked on
   ENGAUGE_ASSERT (m_lines.count () > 0);
 
   SegmentLine *line = m_lines.first();
   QPointF pos = line->line().p1();
 
-                              << " pos=" << QPointFToString (pos).toLatin1().data();
-
   return pos;
 }
 
 void Segment::forwardMousePress()
 {
-                              << " segmentLines=" << m_lines.count();
-
   emit signalMouseClickOnSegment (firstPoint ());
 }
 
@@ -483,17 +471,6 @@ void Segment::removeUnneededLines (int *foldedLines)
 
           // Remove intermediate point, by removing older line and stretching new line to first point
           ++(*foldedLines);
-
-          LOG4CPP_DEBUG_S ((*mainCat)) << "Segment::removeUnneededLines"
-                                       << " segment=0x" << std::hex << static_cast<void*> (this) << std::dec
-                                       << " removing ("
-                                       << linePrevious->line().x1() << "," << linePrevious->line().y1() << ") to ("
-                                       << linePrevious->line().x2() << "," << linePrevious->line().y2() << ") "
-                                       << " and modifying ("
-                                       << line->line().x1() << "," << line->line().y1() << ") to ("
-                                       << line->line().x2() << "," << line->line().y2() << ") into ("
-                                       << xLeft << "," << yLeft << ") to ("
-                                       << xRight << "," << yRight << ")";
 
           removedPoints.append(QPoint(qFloor (xInt),
                                       qFloor (yInt)));

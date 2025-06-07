@@ -81,8 +81,6 @@ const ColorFilterSettingsList &DocumentModelColorFilter::colorFilterSettingsList
 int DocumentModelColorFilter::foregroundHigh (const QString &curveName) const
 {
   QStringList curveNames (m_colorFilterSettingsList.keys());
-                            << " curve=" << curveName.toLatin1().data()
-                            << " curves=" << curveNames.join(",").toLatin1().data();
 
   ENGAUGE_ASSERT (m_colorFilterSettingsList.contains (curveName));
   return m_colorFilterSettingsList [curveName].foregroundHigh();
@@ -91,8 +89,6 @@ int DocumentModelColorFilter::foregroundHigh (const QString &curveName) const
 int DocumentModelColorFilter::foregroundLow (const QString &curveName) const
 {
   QStringList curveNames (m_colorFilterSettingsList.keys());
-                            << " curve=" << curveName.toLatin1().data()
-                            << " curves=" << curveNames.join(",").toLatin1().data();
 
   ENGAUGE_ASSERT (m_colorFilterSettingsList.contains (curveName));
   return m_colorFilterSettingsList [curveName].foregroundLow();
@@ -101,8 +97,6 @@ int DocumentModelColorFilter::foregroundLow (const QString &curveName) const
 double DocumentModelColorFilter::high (const QString &curveName) const
 {
   QStringList curveNames (m_colorFilterSettingsList.keys());
-                            << " curve=" << curveName.toLatin1().data()
-                            << " curves=" << curveNames.join(",").toLatin1().data();
 
   ENGAUGE_ASSERT (m_colorFilterSettingsList.contains (curveName));
   return m_colorFilterSettingsList [curveName].high();
@@ -111,8 +105,6 @@ double DocumentModelColorFilter::high (const QString &curveName) const
 int DocumentModelColorFilter::hueHigh (const QString &curveName) const
 {
   QStringList curveNames (m_colorFilterSettingsList.keys());
-                            << " curve=" << curveName.toLatin1().data()
-                            << " curves=" << curveNames.join(",").toLatin1().data();
 
   ENGAUGE_ASSERT (m_colorFilterSettingsList.contains (curveName));
   return m_colorFilterSettingsList [curveName].hueHigh();
@@ -121,8 +113,6 @@ int DocumentModelColorFilter::hueHigh (const QString &curveName) const
 int DocumentModelColorFilter::hueLow (const QString &curveName) const
 {
   QStringList curveNames (m_colorFilterSettingsList.keys());
-                            << " curve=" << curveName.toLatin1().data()
-                            << " curves=" << curveNames.join(",").toLatin1().data();
 
   ENGAUGE_ASSERT (m_colorFilterSettingsList.contains (curveName));
   return m_colorFilterSettingsList [curveName].hueLow();
@@ -131,8 +121,6 @@ int DocumentModelColorFilter::hueLow (const QString &curveName) const
 int DocumentModelColorFilter::intensityHigh (const QString &curveName) const
 {
   QStringList curveNames (m_colorFilterSettingsList.keys());
-                            << " curve=" << curveName.toLatin1().data()
-                            << " curves=" << curveNames.join(",").toLatin1().data();
 
   ENGAUGE_ASSERT (m_colorFilterSettingsList.contains (curveName));
   return m_colorFilterSettingsList [curveName].intensityHigh();
@@ -141,8 +129,6 @@ int DocumentModelColorFilter::intensityHigh (const QString &curveName) const
 int DocumentModelColorFilter::intensityLow (const QString &curveName) const
 {
   QStringList curveNames (m_colorFilterSettingsList.keys());
-                            << " curve=" << curveName.toLatin1().data()
-                            << " curves=" << curveNames.join(",").toLatin1().data();
 
   ENGAUGE_ASSERT (m_colorFilterSettingsList.contains (curveName));
   return m_colorFilterSettingsList [curveName].intensityLow();
@@ -202,8 +188,6 @@ void DocumentModelColorFilter::loadXml(QXmlStreamReader &reader)
 double DocumentModelColorFilter::low (const QString &curveName) const
 {
   QStringList curveNames (m_colorFilterSettingsList.keys());
-                            << " curve=" << curveName.toLatin1().data()
-                            << " curves=" << curveNames.join(",").toLatin1().data();
 
   ENGAUGE_ASSERT (m_colorFilterSettingsList.contains (curveName));
   return m_colorFilterSettingsList [curveName].low();
@@ -212,8 +196,6 @@ double DocumentModelColorFilter::low (const QString &curveName) const
 int DocumentModelColorFilter::saturationHigh (const QString &curveName) const
 {
   QStringList curveNames (m_colorFilterSettingsList.keys());
-                            << " curve=" << curveName.toLatin1().data()
-                            << " curves=" << curveNames.join(",").toLatin1().data();
 
   ENGAUGE_ASSERT (m_colorFilterSettingsList.contains (curveName));
   return m_colorFilterSettingsList [curveName].saturationHigh();
@@ -222,8 +204,6 @@ int DocumentModelColorFilter::saturationHigh (const QString &curveName) const
 int DocumentModelColorFilter::saturationLow (const QString &curveName) const
 {
   QStringList curveNames (m_colorFilterSettingsList.keys());
-                            << " curve=" << curveName.toLatin1().data()
-                            << " curves=" << curveNames.join(",").toLatin1().data();
 
   ENGAUGE_ASSERT (m_colorFilterSettingsList.contains (curveName));
   return m_colorFilterSettingsList [curveName].saturationLow();

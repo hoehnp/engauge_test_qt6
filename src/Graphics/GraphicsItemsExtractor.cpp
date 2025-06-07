@@ -58,7 +58,6 @@ bool GraphicsItemsExtractor::allSelectedItemsAreEitherAxisOrGraph (const QList<Q
 
 QStringList GraphicsItemsExtractor::selectedPointIdentifiers (const QList<QGraphicsItem*> &items) const
 {
-                              << " selectedItems=" << items.count();
 
   QStringList selectedIds;
   QList<QGraphicsItem*>::const_iterator itr;

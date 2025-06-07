@@ -23,8 +23,6 @@ GuidelineStateDeployedConstantTUnselectEdit::~GuidelineStateDeployedConstantTUns
 
 void GuidelineStateDeployedConstantTUnselectEdit::begin ()
 {
-                              << " identifier=" << context().guideline().identifier().toLatin1().data();
-
   beginCommon (false,
                true);
 

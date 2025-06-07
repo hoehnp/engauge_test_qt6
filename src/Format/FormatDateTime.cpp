@@ -96,11 +96,6 @@ void FormatDateTime::dateTimeLookup (const FormatsDate &formatsDateAll,
             value = toSecsSinceEpoch (dt.toLocalTime ());
             iterating = false; // Stop iterating
 
-                                        << " string=" << string.toLatin1().data()
-                                        << " qDateTimeFormatMatched=" << formatDateTime.toLatin1().data()
-                                        << " value=" << value
-                                        << " stringQDateTime=" << dt.toString().toLatin1().data();
-
           }
         } else {
 
@@ -109,9 +104,6 @@ void FormatDateTime::dateTimeLookup (const FormatsDate &formatsDateAll,
 
             success = true; // Note that value does not get set in QRegExp case
             iterating = false; // Stop iterating
-
-                                        << " string=" << string.toLatin1().data()
-                                        << " regExpMatched=" << formatDateTime.toLatin1().data();
 
           }
         }
@@ -124,7 +116,6 @@ QString FormatDateTime::formatOutput (CoordUnitsDate coordUnitsDate,
                                       CoordUnitsTime coordUnitsTime,
                                       double value) const
 {
-                              << " value=" << value;
 
   ENGAUGE_ASSERT (m_formatsDateFormat.contains (coordUnitsDate));
   ENGAUGE_ASSERT (m_formatsTimeFormat.contains (coordUnitsTime));
@@ -434,10 +425,6 @@ QValidator::State FormatDateTime::parseInput (CoordUnitsDate coordUnitsDate,
                                               const QString &stringUntrimmed,
                                               double &value) const
 {
-                              << " date=" << coordUnitsDateToString (coordUnitsDate).toLatin1().data()
-                              << " time=" << coordUnitsTimeToString (coordUnitsTime).toLatin1().data()
-                              << " string=" << stringUntrimmed.toLatin1().data();
-
   const bool USE_QREGEXP = true, DO_NOT_USE_QREGEXP = false;
 
   const QString string = stringUntrimmed.trimmed();

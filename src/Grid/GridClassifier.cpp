@@ -405,8 +405,6 @@ void GridClassifier::searchCountSpace (double bins [],
                                        double binStep,
                                        int &countMax)
 {
-                              << " start=" << binStart
-                              << " step=" << binStep;
 
   // Loop though the space of possible counts
   Correlation correlation (m_numHistogramBins);

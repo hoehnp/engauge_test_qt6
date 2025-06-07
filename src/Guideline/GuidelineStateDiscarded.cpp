@@ -24,8 +24,6 @@ GuidelineStateDiscarded::~GuidelineStateDiscarded ()
 
 void GuidelineStateDiscarded::begin ()
 {
-                              << " identifier=" << context().guideline().identifier().toLatin1().data();
-
   context().guideline().setGraphicsItemZValue (Z_VALUE_GUIDELINE_DISCARDED);
   context().guideline().setGraphicsItemVisible (false); //
   context().guideline().setGraphicsItemAcceptHoverEvents (false);

@@ -32,11 +32,6 @@ void GraphicsLinesForCurves::addPoint (const QString &curveName,
                                        double ordinal,
                                        GraphicsPoint &point)
 {
-                              << " curve=" << curveName.toLatin1().data()
-                              << " identifier=" << pointIdentifier.toLatin1().data()
-                              << " ordinal=" << ordinal
-                              << " pos=" << QPointFToString (point.pos()).toLatin1().data();
-
   m_graphicsLinesForCurve [curveName]->addPoint (pointIdentifier,
                                                  ordinal,
                                                  point);
@@ -45,7 +40,6 @@ void GraphicsLinesForCurves::addPoint (const QString &curveName,
 void GraphicsLinesForCurves::addRemoveCurves (GraphicsScene &scene,
                                               const QStringList &curveNames)
 {
-                              << " curveCount=" << m_graphicsLinesForCurve.count();
 
   // Add new curves
   QStringList::const_iterator itrC;
@@ -139,9 +133,6 @@ void GraphicsLinesForCurves::printStream (QString indentation,
 
 void GraphicsLinesForCurves::removePoint(const QString &identifier)
 {
-                              << " point=" << identifier.toLatin1().data ()
-                              << " curveCount=" << m_graphicsLinesForCurve.count();
-
   QString curveName = Point::curveNameFromPointIdentifier(identifier);
 
   ENGAUGE_ASSERT (m_graphicsLinesForCurve.contains (curveName));
@@ -176,10 +167,6 @@ void GraphicsLinesForCurves::updateAfterCommand (GraphicsScene &scene,
                                                  const Point &point,
                                                  GeometryWindow *geometryWindow)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GraphicsLinesForCurves::updateAfterCommand"
-                               << " point=" << point.identifier().toLatin1().data()
-                               << " curveCount=" << m_graphicsLinesForCurve.count();
-
   ENGAUGE_ASSERT (m_graphicsLinesForCurve.contains (curveName));
   m_graphicsLinesForCurve [curveName]->updateAfterCommand (scene,
                                                            curveStyles.pointStyle(curveName),
@@ -223,7 +210,6 @@ void GraphicsLinesForCurves::updateGraphicsLinesToMatchGraphicsPoints (const Cur
 
 void GraphicsLinesForCurves::updateHighlightOpacity (double highlightOpacity)
 {
-                              << " highlightOpacity=" << highlightOpacity;
 
   GraphicsLinesContainer::const_iterator itr;
   for (itr = m_graphicsLinesForCurve.begin (); itr != m_graphicsLinesForCurve.end (); itr++) {

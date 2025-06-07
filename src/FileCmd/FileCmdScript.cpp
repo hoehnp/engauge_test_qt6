@@ -18,7 +18,6 @@
 
 FileCmdScript::FileCmdScript(const QString &fileCmdScriptFile)
 {
-                              << " curDir=" << QDir::currentPath().toLatin1().data();
 
   // A non-existent script file is allowed in which case nothing gets done, as a way
   // of tracking MainWindow being in a regression test that has no command script

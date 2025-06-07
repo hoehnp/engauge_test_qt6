@@ -650,7 +650,6 @@ ExportValuesOrdinal ExportFileRelations::ordinalsAtIntervalsSmoothGraph (double 
 ExportValuesOrdinal ExportFileRelations::ordinalsAtIntervalsSmoothScreen (double pointsIntervalRelations,
                                                                           const Points &points) const
 {
-                              << " pointCount=" << points.count();
 
   // Results
   ExportValuesOrdinal ordinals;
@@ -699,7 +698,6 @@ ExportValuesOrdinal ExportFileRelations::ordinalsAtIntervalsStraightGraph (doubl
 ExportValuesOrdinal ExportFileRelations::ordinalsAtIntervalsStraightScreen (double pointsIntervalRelations,
                                                                             const Points &points) const
 {
-                              << " pointCount=" << points.count();
 
   // Results
   ExportValuesOrdinal ordinals;

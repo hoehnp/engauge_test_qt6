@@ -23,8 +23,6 @@ GuidelineStateDeployedConstantYUnselectLock::~GuidelineStateDeployedConstantYUns
 
 void GuidelineStateDeployedConstantYUnselectLock::begin ()
 {
-                              << " identifier=" << context().guideline().identifier().toLatin1().data();
-
   beginCommon (false,
                true);
 

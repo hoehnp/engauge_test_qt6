@@ -23,8 +23,6 @@ GuidelineStateDeployedConstantXSelectEdit::~GuidelineStateDeployedConstantXSelec
 
 void GuidelineStateDeployedConstantXSelectEdit::begin ()
 {
-                              << " identifier=" << context().guideline().identifier().toLatin1().data();
-
   beginCommon (false,
                false);
 

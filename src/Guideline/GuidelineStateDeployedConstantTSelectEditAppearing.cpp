@@ -28,8 +28,6 @@ GuidelineStateDeployedConstantTSelectEditAppearing::~GuidelineStateDeployedConst
 
 void GuidelineStateDeployedConstantTSelectEditAppearing::begin ()
 {
-                              << " identifier=" << context().guideline().identifier().toLatin1().data();
-
   beginCommon (true,
                false);
 

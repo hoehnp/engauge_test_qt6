@@ -215,7 +215,6 @@ QList<QPoint> PointMatchAlgorithm::findPoints (const QList<PointMatchPixel> &sam
                                                const DocumentModelPointMatch &modelPointMatch,
                                                const Points &pointsExisting)
 {
-                              << " samplePointPixels=" << samplePointPixels.count();
 
   // Use larger arrays for computations, if necessary, to improve fft performance
   int originalWidth = imageProcessed.width();
@@ -427,8 +426,6 @@ int PointMatchAlgorithm::optimizeLengthForFft(int originalLength)
     closestLength = originalLength;
   }
 
-                              << " originalLength=" << originalLength
-                              << " newLength=" << closestLength;
 
   return closestLength;
 }

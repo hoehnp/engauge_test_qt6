@@ -39,7 +39,6 @@ GraphicsScene::~GraphicsScene()
 void GraphicsScene::addTemporaryPoint (const QString &identifier,
                                        GraphicsPoint *point)
 {
-                              << " identifier=" << identifier.toLatin1().data();
 
   m_graphicsLinesForCurves.addPoint (AXIS_CURVE_NAME,
                                      identifier,
@@ -70,7 +69,6 @@ GraphicsPoint *GraphicsScene::createPoint (const QString &identifier,
                                            const QPointF &posScreen,
                                            GeometryWindow *geometryWindow)
 {
-                              << " identifier=" << identifier.toLatin1().data();
 
   // Ordinal value is initially computed as one plus the max ordinal seen so far. This initial ordinal value will be overridden if the
   // cordinates determine the ordinal values.
@@ -155,10 +153,6 @@ QStringList GraphicsScene::positionHasChangedPointIdentifiers () const
       QString identifier = item->data (DATA_KEY_IDENTIFIER).toString ();
       bool positionHasChanged = item->data (DATA_KEY_POSITION_HAS_CHANGED).toBool ();
 
-      LOG4CPP_DEBUG_S ((*mainCat)) << "GraphicsScene::positionHasChangedPointIdentifiers"
-                                   << " identifier=" << identifier.toLatin1().data()
-                                   << " positionHasChanged=" << (positionHasChanged ? "yes" : "no");
-
       if (isPoint && positionHasChanged) {
 
         // Add Point to the list
@@ -203,8 +197,6 @@ void GraphicsScene::resetOnLoad()
 
   int itemsAfter = items().count();
 
-                              << " itemsBefore=" << itemsBefore
-                              << " itemsAfter=" << itemsAfter;
 }
 
 void GraphicsScene::resetPositionHasChangedFlags()
@@ -223,10 +215,6 @@ void GraphicsScene::showCurves (bool show,
                                 bool showAll,
                                 const QString &curveNameWanted)
 {
-                              << " show=" << (show ? "true" : "false")
-                              << " showAll=" << (showAll ? "true" : "false")
-                              << " curve=" << curveNameWanted.toLatin1().data();
-
   const QList<QGraphicsItem*> &items = QGraphicsScene::items();
   QList<QGraphicsItem*>::const_iterator itr;
   for (itr = items.begin(); itr != items.end(); itr++) {

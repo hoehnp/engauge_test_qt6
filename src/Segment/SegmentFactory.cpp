@@ -116,12 +116,6 @@ void SegmentFactory::finishRun(bool *lastBool,
                                const DocumentModelSegments &modelSegments,
                                int* madeLines)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "SegmentFactory::finishRun"
-                               << " column=" << x
-                               << " rows=" << yStart << "-" << yStop
-                               << " runsOnLeft=" << adjacentRuns (nextBool, yStart, yStop, height)
-                               << " runsOnRight=" << adjacentSegments (lastSegment, yStart, yStop, height);
-
   // When looking at adjacent columns, include pixels that touch diagonally since
   // those may also diagonally touch nearby runs in the same column (which would indicate
   // a branch)
@@ -279,10 +273,6 @@ void SegmentFactory::makeSegments (const QImage &imageFiltered,
 
   removeEmptySegments (segments);
 
-                                 << " linesCreated=" << madeLines
-                                 << " linesTooShortSoRemoved=" << shortLines
-                                 << " linesFoldedTogether=" << foldedLines;
-
   delete[] lastBool;
   delete[] currBool;
   delete[] nextBool;
@@ -342,8 +332,6 @@ void SegmentFactory::matchRunsToSegments(int x,
 
 void SegmentFactory::removeEmptySegments (QList<Segment*> &segments) const
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "SegmentFactory::removeUnneededLines";
-
   for (int i = segments.count(); i > 0;) {
 
     --i;
@@ -368,8 +356,6 @@ void SegmentFactory::removeUnneededLines(SegmentVector &lastSegment,
                                          const DocumentModelSegments &modelSegments,
                                          QList<Segment*> &segments)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "SegmentFactory::removeUnneededLines";
-
   Segment *segLast = nullptr;
   for (int yLast = 0; yLast < height; yLast++) {
 
@@ -435,8 +421,6 @@ void SegmentFactory::scrollSegment(SegmentVector &left,
 
 void SegmentFactory::clearSegments (QList<Segment*> &segments)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "SegmentFactory::clearSegments";
-
   QList<Segment*>::iterator itr;
   for (itr = segments.begin(); itr != segments.end(); itr++) {
 

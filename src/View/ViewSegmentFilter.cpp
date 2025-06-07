@@ -113,7 +113,6 @@ QColor ViewSegmentFilter::colorFromSetting (ColorFilterMode colorFilterMode,
       break;
 
     default:
-      LOG4CPP_ERROR_S ((*mainCat)) << "ViewSegmentFilter::colorFromSetting unexpected color filter mode " << colorFilterMode;
       ENGAUGE_ASSERT (false);
   }
 
@@ -201,8 +200,6 @@ void ViewSegmentFilter::setColorFilterSettings (const ColorFilterSettings &color
 
 void ViewSegmentFilter::setEnabled (bool enabled)
 {
-                              << " enabled=" << (enabled ? "true" : "false");
-
   m_enabled = enabled;
 
   // Force a redraw

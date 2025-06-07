@@ -70,8 +70,6 @@ QPixmap ViewPointStyle::pixmapForCurrentSettings () const
 
 void ViewPointStyle::setEnabled (bool enabled)
 {
-                              << " enabled=" << (enabled ? "true" : "false");
-
   m_enabled = enabled;
   setPixmap (pixmapForCurrentSettings ());
 }

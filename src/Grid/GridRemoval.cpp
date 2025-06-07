@@ -54,9 +54,6 @@ QPixmap GridRemoval::remove (const Transformation &transformation,
                              const DocumentModelGridRemoval &modelGridRemoval,
                              const QImage &imageBefore)
 {
-                              << " transformationIsDefined=" << (transformation.transformIsDefined() ? "true" : "false")
-                              << " removeDefinedGridLines=" << (modelGridRemoval.removeDefinedGridLines() ? "true" : "false");
-
   QImage image = imageBefore;
 
   // Collect GridHealers instances, one per grid line

@@ -23,8 +23,6 @@ GuidelineStateDeployedConstantXSelectHide::~GuidelineStateDeployedConstantXSelec
 
 void GuidelineStateDeployedConstantXSelectHide::begin ()
 {
-                              << " identifier=" << context().guideline().identifier().toLatin1().data();
-
   beginCommon (false,
                false);
 

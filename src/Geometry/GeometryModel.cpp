@@ -25,12 +25,6 @@ QVariant GeometryModel::data(const QModelIndex &index, int role) const
   const int HEADER_OFFSET = 1;
   const int NUM_LEGEND_ROWS_UNSPANNED = 2; // Match with GeometryWindow::NUM_LEGEND_ROWS_UNSPANNED
 
-//  LOG4CPP_DEBUG_S ((*mainCat)) << "GeometryModel::data"
-//                               << " rowHighlighted=" << m_rowToBeHighlighted
-//                               << " index=(row=" << index.row() << ",col=" << index.column() << ",role=" << role << ")="
-//                               << " rows=" << rowCount()
-//                               << " cols=" << columnCount();
-
   if ((role == Qt::BackgroundRole) &&
       !m_pointIdentifier.isEmpty () &&
       (index.row () == m_rowToBeHighlighted)) {
@@ -56,8 +50,6 @@ QVariant GeometryModel::data(const QModelIndex &index, int role) const
 
 int GeometryModel::rowToBeHighlighted () const
 {
-                              << " rows=" << rowCount()
-                              << " cols=" << columnCount();
 
   for (int row = 0; row < rowCount(); row++) {
 
@@ -81,10 +73,6 @@ int GeometryModel::rowToBeHighlighted () const
 
 void GeometryModel::setCurrentPointIdentifier (const QString &pointIdentifier)
 {
-                              << " rows=" << rowCount()
-                              << " cols=" << columnCount()
-                              << " identifier=" << pointIdentifier.toLatin1().data();
-
   m_pointIdentifier = pointIdentifier;
 
   int rowTransitioned;

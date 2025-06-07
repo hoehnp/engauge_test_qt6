@@ -182,7 +182,6 @@ MainWindow::MainWindow(const QString &errorReportFile,
   m_extractImageOnlyExtension (extractImageOnlyExtension),
   m_timerChecklistGuideWizard (nullptr)
 {
-                              << " curDir=" << QDir::currentPath().toLatin1().data();
 
 #if defined(OSX_DEBUG) || defined(OSX_RELEASE)
   qApp->setApplicationName ("Engauge Digitizer");
@@ -312,7 +311,6 @@ void MainWindow::applyZoomFactorAfterLoad()
   } else if (zoomFactorInitial == ZOOM_INITIAL_PREVIOUS) {
     zoomFactor = currentZoomFactor ();
   } else {
-    LOG4CPP_ERROR_S ((*mainCat)) << "MainWindow::applyZoomFactorAfterLoad unexpected zoom factor " << zoomFactorInitial;
     ENGAUGE_ASSERT (false);
     zoomFactor = currentZoomFactor();
   }
@@ -377,7 +375,6 @@ ZoomFactor MainWindow::currentZoomFactor () const
     }
   }
 
-  LOG4CPP_ERROR_S ((*mainCat)) << "MainWindow::currentZoomFactor encountered unexpected zoom control";
   ENGAUGE_ASSERT (false);
   return ZOOM_1_TO_1;
 }
@@ -463,8 +460,6 @@ QString MainWindow::exportRegressionFilenameFromInputFilename (const QString &fi
 void MainWindow::fileExport(const QString &fileName,
                             ExportToFile exportStrategy)
 {
-                              << " curDir=" << QDir::currentPath().toLatin1().data()
-                              << " fileName=" << fileName.toLatin1().data();
 
   QFile file (fileName);
   if (file.open(QIODevice::WriteOnly)) {
@@ -488,9 +483,6 @@ void MainWindow::fileExport(const QString &fileName,
 
   } else {
 
-    LOG4CPP_ERROR_S ((*mainCat)) << "MainWindow::fileExport"
-                                 << " file=" << fileName.toLatin1().data()
-                                 << " curDir=" << QDir::currentPath().toLatin1().data();
     QMessageBox::critical (nullptr,
                            engaugeWindowTitle(),
                            tr ("Unable to export to file") + " " + fileName);
@@ -499,9 +491,6 @@ void MainWindow::fileExport(const QString &fileName,
 
 void MainWindow::fileExtractImage (const QString &fileName)
 {
-                              << " curDir=" << QDir::currentPath().toLatin1().data()
-                              << " fileName=" << fileName.toLatin1().data();
-
   QFile file (fileName);
   bool success = true;  
   if (file.open(QIODevice::WriteOnly)) {
@@ -532,9 +521,6 @@ void MainWindow::fileExtractImage (const QString &fileName)
 
   if (! success) {
     
-    LOG4CPP_ERROR_S ((*mainCat)) << "MainWindow::fileExtractImage"
-                                 << " file=" << fileName.toLatin1().data()
-                                 << " curDir=" << QDir::currentPath().toLatin1().data();
     QMessageBox::critical (nullptr,
                            engaugeWindowTitle(),
                            tr ("Unable to extract image to file") + " " + fileName);
@@ -544,9 +530,6 @@ void MainWindow::fileExtractImage (const QString &fileName)
 void MainWindow::fileImport (const QString &fileName,
                              ImportType importType)
 {
-                              << " fileName=" << fileName.toLatin1 ().data ()
-                              << " curDir=" << QDir::currentPath().toLatin1().data()
-                              << " importType=" << importType;
 
   QString originalFileOld = m_originalFile;
   bool originalFileWasImported = m_originalFileWasImported;
@@ -676,7 +659,6 @@ void MainWindow::fileImport (const QString &fileName,
 
 void MainWindow::fileImportWithPrompts (ImportType importType)
 {
-                              << " importType=" << importType;
 
   // Skip maybeSave method for IMPORT_TYPE_REPLACE_IMAGE since open file dialog is enough to allow user to cancel the operation, and
   // since no information is lost in that case
@@ -753,7 +735,6 @@ QString MainWindow::fileNameForExtractImageOnly () const
 
 void MainWindow::filePaste (ImportType importType)
 {
-                              << " importType=" << importType;
 
   QString originalFileOld = m_originalFile;
   bool originalFileWasImported = m_originalFileWasImported;
@@ -817,7 +798,6 @@ void MainWindow::filePaste (ImportType importType)
 
 void MainWindow::ghostsCreate ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "MainWindow::ghostsCreate";
 
   ENGAUGE_ASSERT (m_ghosts == nullptr);
   m_ghosts = new Ghosts (m_cmdMediator->document().coordSystemIndex());
@@ -843,7 +823,6 @@ void MainWindow::ghostsCreate ()
 
 void MainWindow::ghostsDestroy ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "MainWindow::ghostsDestroy";
 
   ENGAUGE_CHECK_PTR (m_ghosts);
 
@@ -1074,7 +1053,6 @@ void MainWindow::loadDocumentFile (const QString &fileName)
 
 void MainWindow::loadErrorReportFile(const QString &errorReportFile)
 {
-                              << " file=" << errorReportFile.toLatin1().data();
 
   QFile file (errorReportFile);
   if (!file.exists()) {
@@ -1121,8 +1099,6 @@ bool MainWindow::loadImage (const QString &fileName,
                             const QImage &image,
                             ImportType importType)
 {
-                              << " fileName=" << fileName.toLatin1 ().data ()
-                              << " importType=" << importType;
 
   bool success;
   if (importType == IMPORT_TYPE_IMAGE_REPLACE) {
@@ -1142,8 +1118,6 @@ bool MainWindow::loadImageNewDocument (const QString &fileName,
                                        const QImage &image,
                                        ImportType importType)
 {
-                              << " fileName=" << fileName.toLatin1 ().data ()
-                              << " importType=" << importType;
 
   ENGAUGE_ASSERT (importType != IMPORT_TYPE_IMAGE_REPLACE);
 
@@ -1197,8 +1171,6 @@ bool MainWindow::loadImageReplacingImage (const QString &fileName,
                                           const QImage &image,
                                           ImportType importType)
 {
-                              << " fileName=" << fileName.toLatin1 ().data ()
-                              << " importType=" << importType;
 
   ENGAUGE_ASSERT (importType == IMPORT_TYPE_IMAGE_REPLACE);
 
@@ -1270,7 +1242,6 @@ void MainWindow::loadToolTips()
 
 void MainWindow::loadViewsLoad ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "MainWindow::loadViewLoad";
 
   if (m_modelMainWindow.loadViews() == LOAD_VIEWS_USE_DOCUMENT) {
 
@@ -1284,8 +1255,6 @@ void MainWindow::loadViewsLoad ()
 
 void MainWindow::loadViewsSave ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "MainWindow::loadViewSave";
-
   DocumentModelLoadViews modelLoadViews (m_actionViewGridLines->isChecked(),
                                          m_actionViewGuidelines->isChecked());
   m_cmdMediator->document().setModelLoadViews (modelLoadViews);
@@ -1364,8 +1333,6 @@ void MainWindow::rebuildRecentFileListForCurrentFile(const QString &filePath)
 
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "MainWindow::resizeEvent";
-
   if (m_actionZoomFill->isChecked ()) {
     slotViewZoomFactor (ZOOM_FILL);
   }
@@ -1897,9 +1864,6 @@ bool MainWindow::setupAfterLoadNewDocument (const QString &fileName,
                                             const QString &temporaryMessage ,
                                             ImportType importType)
 {
-                              << " file=" << fileName.toLatin1().data()
-                              << " message=" << temporaryMessage.toLatin1().data()
-                              << " importType=" << importType;
 
   // The steps in this method should theoretically be a superset of the steps in setupAfterLoadNewDocument. Therefore, any
   // changes to this method should be considered for application to the other method also
@@ -1984,9 +1948,6 @@ bool MainWindow::setupAfterLoadReplacingImage (const QString &fileName,
                                                const QString &temporaryMessage ,
                                                ImportType importType)
 {
-                              << " file=" << fileName.toLatin1().data()
-                              << " message=" << temporaryMessage.toLatin1().data()
-                              << " importType=" << importType;
 
   // The steps in this method should theoretically be just a subset of the steps in setupAfterLoadNewDocument
 
@@ -2019,7 +1980,6 @@ bool MainWindow::setupAfterLoadReplacingImage (const QString &fileName,
 
 void MainWindow::showEvent (QShowEvent *event)
 {
-                              << " files=" << m_loadStartupFiles.join (",").toLatin1().data();
 
   QMainWindow::showEvent (event);
 
@@ -2041,7 +2001,6 @@ void MainWindow::showTemporaryMessage (const QString &temporaryMessage)
 
 void MainWindow::slotBtnPrintAll ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "MainWindow::slotBtnPrintAll";
 
   ghostsCreate ();
 
@@ -2058,7 +2017,6 @@ void MainWindow::slotBtnPrintAll ()
 
 void MainWindow::slotBtnShowAllPressed ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "MainWindow::slotBtnShowAllPressed";
 
   // Start of press-release sequence
   ghostsCreate ();
@@ -2066,7 +2024,6 @@ void MainWindow::slotBtnShowAllPressed ()
 
 void MainWindow::slotBtnShowAllReleased ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "MainWindow::slotBtnShowAllReleased";
 
   // End of press-release sequence
   ghostsDestroy ();
@@ -2074,14 +2031,12 @@ void MainWindow::slotBtnShowAllReleased ()
 
 void MainWindow::slotCanRedoChanged (bool canRedo)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "MainWindow::slotCanRedoChanged";
 
   m_actionEditRedo->setEnabled (canRedo || m_cmdStackShadow->canRedo());
 }
 
 void MainWindow::slotCanUndoChanged (bool canUndo)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "MainWindow::slotCanUndoChanged";
 
   m_actionEditUndo->setEnabled (canUndo);
 }
@@ -2644,7 +2599,6 @@ void MainWindow::slotFittingWindowCurveFit(FittingCurveCoefficients fittingCurve
                                            bool isLogYRadius)
 {
   // Do not output elements in fittingCurveCoef here since that list may be empty
-                              << " order=" << fittingCurveCoef.size() - 1;
 
   if (m_fittingCurve != nullptr) {
     m_scene->removeItem (m_fittingCurve);
@@ -2708,8 +2662,6 @@ void MainWindow::slotHelpTutorial()
 void MainWindow::slotKeyPress (Qt::Key key,
                                bool atLeastOneSelectedItem)
 {
-                              << " key=" << QKeySequence (key).toString().toLatin1 ().data ()
-                              << " atLeastOneSelectedItem=" << (atLeastOneSelectedItem ? "true" : "false");
 
   m_digitizeStateContext->handleKeyPress (m_cmdMediator,
                                           key,
@@ -2748,7 +2700,6 @@ void MainWindow::slotLoadStartupFiles ()
 
 void MainWindow::slotMouseMove (QPointF pos)
 {
-//  LOG4CPP_DEBUG_S ((*mainCat)) << "MainWindow::slotMouseMove pos=" << QPointFToString (pos).toLatin1 ().data ();
 
   // Ignore mouse moves before Document is loaded
   if (m_cmdMediator != nullptr) {
@@ -2825,7 +2776,6 @@ void MainWindow::slotRecentFileClear ()
 
 void MainWindow::slotRedoTextChanged (const QString &text)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "MainWindow::slotRedoTextChanged";
 
   QString completeText ("Redo");
   if (!text.isEmpty ()) {
@@ -2983,9 +2933,6 @@ void MainWindow::slotTimeoutChecklistGuideWizard ()
 
 void MainWindow::slotTimeoutRegressionErrorReport ()
 {
-                              << " cmdStackIndex=" << m_cmdMediator->index()
-                              << " cmdStackCount=" << m_cmdMediator->count();
-
   if (m_cmdStackShadow->canRedo()) {
 
     // Always reset current directory before the command. This guarantees the upcoming redo step will work
@@ -3044,8 +2991,6 @@ void MainWindow::slotTimeoutRegressionFileCmdScript ()
 
 void MainWindow::slotUndoTextChanged (const QString &text)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "MainWindow::slotUndoTextChanged";
-
   QString completeText ("Undo");
   if (!text.isEmpty ()) {
     completeText += QString (" \"%1\"").arg (text);
@@ -3055,8 +3000,6 @@ void MainWindow::slotUndoTextChanged (const QString &text)
 
 void MainWindow::slotViewGridLines ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "MainWindow::slotViewGridLines";
-
   updateGridLines ();
 }
 
@@ -3076,7 +3019,6 @@ void MainWindow::slotViewGroupBackground(QAction *action)
     indexBackground = m_cmbBackground->findData (QVariant (BACKGROUND_IMAGE_FILTERED));
     backgroundImage = BACKGROUND_IMAGE_FILTERED;
   } else {
-    LOG4CPP_ERROR_S ((*mainCat)) << "MainWindow::slotViewGroupBackground unexpected action";
     ENGAUGE_ASSERT (false);
 
     // Defaults if assert is disabled so execution continues
@@ -3110,8 +3052,6 @@ void MainWindow::slotViewGroupStatus(QAction *action)
 
 void MainWindow::slotViewGuidelines ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "MainWindow::slotViewGuidelines";
-
   updateGuidelines();
 }
 
@@ -3463,7 +3403,6 @@ void MainWindow::updateChecklistGuide ()
 
 void MainWindow::updateControls ()
 {
-                              << " selectedItems=" << m_scene->selectedItems().count();
 
   m_cmbBackground->setEnabled (!m_currentFile.isEmpty ());
 
@@ -3613,7 +3552,6 @@ void MainWindow::updateDigitizeStateIfSoftwareTriggered (DigitizeState digitizeS
       break;
 
     default:
-      LOG4CPP_ERROR_S ((*mainCat)) << "MainWindow::updateDigitizeStateIfSoftwareTriggered";
       break;
   }
 }
@@ -3924,7 +3862,6 @@ void MainWindow::updateViewedCurves ()
     m_scene->showCurves (false);
 
   } else {
-    LOG4CPP_ERROR_S ((*mainCat)) << "MainWindow::updateViewedCurves unexpected control";
     ENGAUGE_ASSERT (false);
   }
 }
@@ -4024,12 +3961,5 @@ void MainWindow::writeCheckpointToLogFile ()
   // Skip slow string manipulation if BEFORE call to LOG4CPP_DEBUG_S
   if (mainCat->getPriority() == log4cpp::Priority::DEBUG) {
 
-    LOG4CPP_DEBUG_S ((*mainCat)) << "MainWindow::writeCheckpointToLogFile\n"
-                                 << "--------------DOCUMENT CHECKPOINT START----------" << "\n"
-                                 << checkpointDoc.toLatin1().data()
-                                 << "---------------DOCUMENT CHECKPOINT END-----------" << "\n"
-                                 << "----------------SCENE CHECKPOINT START-----------" << "\n"
-                                 << checkpointScene.toLatin1().data()
-                                 << "-----------------SCENE CHECKPOINT END------------" ;
   }
 }

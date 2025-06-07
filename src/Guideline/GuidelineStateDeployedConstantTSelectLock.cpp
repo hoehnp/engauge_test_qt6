@@ -23,8 +23,6 @@ GuidelineStateDeployedConstantTSelectLock::~GuidelineStateDeployedConstantTSelec
 
 void GuidelineStateDeployedConstantTSelectLock::begin ()
 {
-                              << " identifier=" << context().guideline().identifier().toLatin1().data();
-
   beginCommon (false,
                true);
 }

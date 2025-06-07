@@ -461,8 +461,6 @@ void Transformation::update (bool fileIsLoaded,
                              const CmdMediator &cmdMediator,
                              const MainWindowModel &modelMainWindow)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "Transformation::update";
-
   if (!fileIsLoaded) {
 
     m_transformIsDefined = false;
@@ -548,13 +546,4 @@ void Transformation::updateTransformFromMatrices (const QTransform &matrixScreen
   QPointF pointScreen2 (matrixScreen.m13(),
                         matrixScreen.m23());
 
-                              << " matrixScreen=\n" << QTransformToString (matrixScreen).toLatin1().data () << " "
-                              << " matrixGraphRaw=\n" << QTransformToString (matrixGraph).toLatin1().data() << " "
-                              << " matrixGraphLinear=\n" << QTransformToString (matrixGraphLinear).toLatin1().data() << "\n"
-                              << " originalScreen0=" << QPointFToString (pointScreen0).toLatin1().data() << "\n"
-                              << " originalScreen1=" << QPointFToString (pointScreen1).toLatin1().data() << "\n"
-                              << " originalScreen2=" << QPointFToString (pointScreen2).toLatin1().data() << "\n"
-                              << " roundTripScreen0=" << QPointFToString (pointScreenRoundTrip0).toLatin1().data() << "\n"
-                              << " roundTripScreen1=" << QPointFToString (pointScreenRoundTrip1).toLatin1().data() << "\n"
-                              << " roundTripScreen2=" << QPointFToString (pointScreenRoundTrip2).toLatin1().data() << "\n";
 }
