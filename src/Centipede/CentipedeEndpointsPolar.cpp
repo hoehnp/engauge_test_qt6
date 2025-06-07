@@ -58,8 +58,6 @@ void CentipedeEndpointsPolar::ellipseScreenConstantRForTHighLowAngles (const Tra
                                                                        QRectF &rectBounding,
                                                                        CentipedeDebugPolar &debugPolar)
 {
-  //  LOG4CPP is below
-
   QPointF posClickGraph;
   transformation.transformScreenToRawGraph (posClickScreen,
                                             posClickGraph);

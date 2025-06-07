@@ -3958,8 +3958,4 @@ void MainWindow::writeCheckpointToLogFile ()
   m_scene->printStream (INDENTATION_PAST_TIMESTAMP,
                         strScene);
 
-  // Skip slow string manipulation if BEFORE call to LOG4CPP_DEBUG_S
-  if (mainCat->getPriority() == log4cpp::Priority::DEBUG) {
-
-  }
 }

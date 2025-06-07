@@ -89,7 +89,6 @@ DlgValidatorAbstract *DlgValidatorFactory::createWithNonPolar (CoordScale coordS
                                     locale);
 
     default:
-      LOG4CPP_ERROR_S ((*mainCat)) << "DlgValidatorFactory::createWithNonPolar";
       exit (-1);
   }
 }
@@ -113,7 +112,6 @@ DlgValidatorAbstract *DlgValidatorFactory::createWithPolar (CoordScale coordScal
                                      locale);
 
     default:
-      LOG4CPP_ERROR_S ((*mainCat)) << "DlgValidatorFactory::createWithNonPolar";
       exit (-1);
   }
 }

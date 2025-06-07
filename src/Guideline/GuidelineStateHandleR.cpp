@@ -36,9 +36,6 @@ QPointF GuidelineStateHandleR::convertGraphCoordinateToScreenPoint (double value
                                                                  valueGraph),
                                                         posScreen);
 
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineStateHandleR::convertGraphCoordinateToScreenPoint"
-                               << " pos=(" << posScreen.x() << ", " << posScreen.y() << ")";
-
   return posScreen;
 }
 
@@ -47,9 +44,6 @@ double GuidelineStateHandleR::convertScreenPointToGraphCoordinate(const QPointF 
   QPointF posGraph;
   context().transformation().transformScreenToRawGraph (posScreen,
                                                         posGraph);
-
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineStateHandleR::convertScreenPointToGraphCoordinate"
-                               << " pos=(" << posGraph.x() << ", " << posGraph.y() << ")";
 
   return posGraph.y();
 }
@@ -60,8 +54,6 @@ void GuidelineStateHandleR::end ()
 
 void GuidelineStateHandleR::handleMouseRelease (const QPointF &posScene)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineStateHandleR::handleMouseRelease";
-
   context().guideline().sacrificeHandleAndVisibleGuidelines(posScene,
                                                             GUIDELINE_STATE_DEPLOYED_CONSTANT_R_SELECT_EDIT);
   context().requestStateTransition (GUIDELINE_STATE_DISCARDED);

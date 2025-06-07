@@ -33,9 +33,6 @@ void GuidelineStateDiscarded::begin ()
 
 QPointF GuidelineStateDiscarded::convertGraphCoordinateToScreenPoint (double /* valueGraph */) const
 {
-  LOG4CPP_ERROR_S ((*mainCat)) << "GuidelineStateDiscarded::convertGraphCoordinateToScreenPoint "
-                               << "should not be called";
-
   ENGAUGE_ASSERT (false);
 
   return QPointF (0, 0); // No-harm value
@@ -43,8 +40,6 @@ QPointF GuidelineStateDiscarded::convertGraphCoordinateToScreenPoint (double /* 
 
 double GuidelineStateDiscarded::convertScreenPointToGraphCoordinate (const QPointF & /* posScreen */) const
 {
-  LOG4CPP_ERROR_S ((*mainCat)) << "GuidelineStateDiscarded::convertScreenPointToGraphCoordinate";
-
   ENGAUGE_ASSERT (false);
 
   return 0.1; // No-harm value even if using log scale
@@ -70,15 +65,11 @@ void GuidelineStateDiscarded::handleGuidelineMode (bool /* visible */,
 
 void GuidelineStateDiscarded::handleHoverEnterEvent ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineStateHandle::handleHoverEnterEvent";
-
   // Noop. Never called since hover only works when visible
 }
 
 void GuidelineStateDiscarded::handleHoverLeaveEvent ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "GuidelineStateHandle::handleHoverEnterEvent";
-
   // Noop. Never called since hover only works when visible
 }
 

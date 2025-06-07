@@ -21,9 +21,6 @@ SegmentLine::SegmentLine(QGraphicsScene  &scene,
   m_modelSegments (modelSegments),
   m_segment (segment)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "SegmentLine::SegmentLine"
-                               << " address=0x" << std::hex << static_cast<void *> (this);
-
   setData (DATA_KEY_GRAPHICS_ITEM_TYPE, QVariant (GRAPHICS_ITEM_TYPE_SEGMENT));
 
   // Make this transparent now, but always visible so hover events work
@@ -40,8 +37,6 @@ SegmentLine::SegmentLine(QGraphicsScene  &scene,
 
 SegmentLine::~SegmentLine ()
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "SegmentLine::~SegmentLine"
-                               << " address=0x" << std::hex << static_cast<void *> (this);
 }
 
 void SegmentLine::hoverEnterEvent(QGraphicsSceneHoverEvent * /* event */)

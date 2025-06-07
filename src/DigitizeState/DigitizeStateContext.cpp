@@ -219,8 +219,6 @@ void DigitizeStateContext::setCursor (CmdMediator *cmdMediator)
 
 void DigitizeStateContext::setDragMode (QGraphicsView::DragMode dragMode)
 {
-  LOG4CPP_DEBUG_S ((*mainCat)) << "DigitizeStateContext::setDragMode";
-
   if (m_imageIsLoaded) {
     m_view.setDragMode (dragMode);
   }

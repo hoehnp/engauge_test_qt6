@@ -497,7 +497,6 @@ void DlgSettingsColorFilter::updateHistogram()
 
   } else {
 
-    LOG4CPP_ERROR_S ((*mainCat)) << "DlgSettingsColorFilter::updateHistogram unknown button pressed";
     ENGAUGE_ASSERT (false);
 
   }

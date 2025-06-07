@@ -44,7 +44,6 @@ QString FormatDegreesMinutesSecondsPolarTheta::formatOutput (CoordUnitsPolarThet
       break;
   }
 
-  LOG4CPP_ERROR_S ((*mainCat)) << "FormatDegreesMinutesSecondsPolarTheta::formatOutput";
   ENGAUGE_ASSERT (false);
 
   return "";

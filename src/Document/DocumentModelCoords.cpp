@@ -292,8 +292,6 @@ double DocumentModelCoords::thetaPeriod () const
       break;
   }
 
-  LOG4CPP_ERROR_S ((*mainCat)) << "DocumentModelCoords::thetaPeriod";
-
   ENGAUGE_ASSERT(false);
   return 0;
 }

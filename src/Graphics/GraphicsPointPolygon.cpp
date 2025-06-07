@@ -43,11 +43,6 @@ QVariant GraphicsPointPolygon::itemChange(GraphicsItemChange change,
                                           const QVariant &value)
 {
   if (change == QGraphicsItem::ItemPositionHasChanged) {
-
-    LOG4CPP_DEBUG_S ((*mainCat)) << "GraphicsPointPolygon::itemChange"
-                                 << " identifier=" << data (DATA_KEY_IDENTIFIER).toString().toLatin1().data()
-                                 << " positionHasChanged";
-
     setData (DATA_KEY_POSITION_HAS_CHANGED, QVariant (true));
   }
 

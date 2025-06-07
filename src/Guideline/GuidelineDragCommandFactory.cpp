@@ -113,8 +113,5 @@ double GuidelineDragCommandFactory::valueForIdentifier (const DocumentModelGuide
     }
   }
 
-  LOG4CPP_ERROR_S ((*mainCat)) << "GuidelineDragCommandFactory::valueForIdentifier identifier "
-                               << identifierWanted.toLatin1().data() << " was not found";
-
   return 0.0;
 }
