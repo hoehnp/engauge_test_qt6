@@ -11,7 +11,6 @@
 #include <iostream>
 #include "Logger.h"
 #include "mmsubs.h"
-#include <qdebug.h>
 #include <QFile>
 #include <QGraphicsScene>
 #include <qmath.h>
